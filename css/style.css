@@ -1,0 +1,164 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;;
+}
+
+html {
+  height: 100%;
+}
+
+/* Body */
+
+body {
+  background-color: #f5f5f5;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Body */
+
+/* Navigation Bar */
+
+.navbar {
+  background-color: #db4437;
+}
+
+.navbar-brand {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+#navbarDropdown {
+  color: white;
+}
+
+#dropdown-menu {
+  position: absolute;
+}
+
+/* Navigation Bar */
+
+/* Content */
+
+.container {
+  flex: 1 0 auto;
+}
+
+.btn-propose {
+  height: 48px;
+  background-color: #db4437;
+  color: #fff;
+}
+
+.btn-propose:hover {
+  background-color: #941106;
+  color: #fff;
+}
+
+/* Content */
+
+/* Idea Form */
+
+.propose-heading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.post-idea {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.post-idea label {
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.post-idea small {
+  font-size: 13px;
+  margin-top: 0px;
+  margin-bottom: 7px;
+}
+
+.post-idea .btn-propose {
+  background-color: #db4437;
+  color: #fff;
+}
+
+.post-idea .btn-propose:hover {
+  background-color: #941106;
+  color: #fff;
+}
+
+/* Idea Form */
+
+/* Profile Form */
+
+.profile {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.profile-heading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.profile label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-edit {
+  background-color: #0275d8;
+  color: #fff;
+}
+
+.btn-edit:hover {
+  background-color: #0059a6;
+  color: #fff;
+}
+
+.btn-save {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+.btn-save:hover {
+  background-color: #378a37;
+  color: #fff;
+}
+
+/* Profile Form */
+
+/* Footer */
+
+.page-footer {
+  background-color: #021d59;
+  margin-top: 68px;
+}
+
+.footer-copyright {
+  color: #fff;
+}
+
+/* Footer */
+
+/* If the screen size is 600px wide or less, hide the element */
+@media only screen and (max-width: 575px) {
+  .btn-edit, .btn-save, .btn-propose {
+    width: 100%;
+  }
+
+  .btn-save {
+    margin-top: 20px;
+  }
+}
+
