@@ -42,8 +42,6 @@
 		    </ul>
 		</nav>
 
-		<nav></nav>
-
 		<!-- Navbar -->
 
 		<!-- Content -->
