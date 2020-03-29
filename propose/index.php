@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>My Account | Ideas</title>
+		<title>Propose an Idea | Ideas</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -17,6 +17,10 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 		<!-- Bootstrap core JavaScript -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<!-- Summernote css -->
+	    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css" rel="stylesheet">
+	    <!-- Summernote js -->
+	    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
 		<!-- Local Stylesheet -->
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<!-- Local Script -->
@@ -35,7 +39,7 @@
 		          aria-haspopup="true" aria-expanded="false" href="#">
 		          <i class="fas fa-user"></i> Profile </a>
 		        <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="../account/account.php">My account</a>
+		          <a class="dropdown-item" href="../account/index.php">My account</a>
 		          <a class="dropdown-item" href="#">Log out</a>
 		        </div>
 		      </li>
@@ -45,73 +49,35 @@
 		<!-- Navbar -->
 
 		<!-- Content -->
-
 		<div class="container">
-
 			<div class="main mx-auto">
 
-	      		<h1 class="profile-heading">My Account</h1>
+		      <h1 class="propose-heading">What's on your mind?</h1>
 
-		      	<!-- Profile Form -->
+		      <!-- Idea Form -->
 
-		      	<div class="profile shadow">
-		        	<form>
-		          		<div class="form-row">
-		            		<div class="form-group col-md-6">
-		              		<label>First Name</label>
-		              		<input type="text" class="form-control" name="">
-		            	</div>
-		            	<div class="form-group col-md-6">
-		              		<label>Last Name</label>
-		              		<input type="text" class="form-control" name="">
-		            	</div>
-		          		</div>
-		          			<div class="form-group">
-		            			<label>Email Address</label>
-		            			<input type="text" class="form-control" name="">
-		          			</div>
-		          		<div class="form-row">
-				            <div class="form-group col-md-6">
-				              <label>Department</label>
-				                <select id="inputDepartment" class="form-control">
-				                  <option selected>Choose...</option>
-				                  <option>...</option>
-				                </select>
-				            </div>
-				            <div class="form-group col-md-6">
-				              <label>Gender</label>
-				                <select id="inputDepartment" class="form-control">
-				                  <option selected>Choose...</option>
-				                  <option>...</option>
-				                </select>
-				            </div>
-		          		</div>
-		          		<div class="form-row">
-				            <div class="form-group col-md-6">
-				              <label>Password</label>
-				              <input type="text" class="form-control" name="">
-				            </div>
-		            	<div class="form-group col-md-6">
-				              <label>Confirm Password</label>
-				              <input type="text" class="form-control" name="">
-		            	</div>
-		          	</div>
-		          	<div class="row">
-		          		<div class="col-sm-6">
-		          			<button type="submit" class="btn btn-edit">Edit Details</button>
-		          		</div>
-		          		<div class="col-sm-6">
-		          			<button type="submit" class="btn btn-save" disabled>Save Details</button>
-		          		</div>
-		          	</div>
+		      <div class="post-idea shadow">
+		        <form>
+		          <div class="form-group">
+		            <label>Title</label>
+		            <small class="form-text text-muted">Be specific and imagine you’re proposing an idea to another person</small>
+		            <input type="text" class="form-control" name="title">
+		          </div>
+		          <div class="form-group">
+		            <label>Body</label>
+		            <small class="form-text text-muted">Include all the details about your proposed idea</small>
+		            <textarea class="form-control" id="summernote"></textarea>
+		          </div>
+		          <div class="form-group">
+		            <label>Catergories</label>
+		            <small class="form-text text-muted">Add categories to describe what your question is about</small>
+		            <input type="text" class="form-control" name="categories">
+		          </div>
+		          <button type="submit" class="btn btn-propose">Propose Idea</button>
 		        </form>
 		      </div>
-
-		      <!-- Profile Form -->
-
-	    	</div>
-    	</div>
-
+		    </div>
+		</div>
 		<!-- Content -->
 
 	    <!-- Footer -->
