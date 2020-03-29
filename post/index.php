@@ -35,7 +35,7 @@
 		          aria-haspopup="true" aria-expanded="false" href="#">
 		          <i class="fas fa-user"></i> Profile </a>
 		        <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="../account/account.php">My account</a>
+		          <a class="dropdown-item" href="../account/index.php">My account</a>
 		          <a class="dropdown-item" href="#">Log out</a>
 		        </div>
 		      </li>

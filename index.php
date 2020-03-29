@@ -35,7 +35,7 @@
 		          aria-haspopup="true" aria-expanded="false" href="#">
 		          <i class="fas fa-user"></i> Profile </a>
 		        <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="account/account.php">My account</a>
+		          <a class="dropdown-item" href="account/index.php">My account</a>
 		          <a class="dropdown-item" href="#">Log out</a>
 		        </div>
 		      </li>
@@ -58,7 +58,7 @@
 					<h1 class="my-4 latest-ideas">Latest Ideas</h1>
 					</div>
 					<div class="col-sm-6">
-					<a href="propose/propose.php"><button class="btn btn-propose my-4">Propose an Idea</button></a>
+					<a href="propose/index.php"><button class="btn btn-propose my-4">Propose an Idea</button></a>
 				</div>
 					</div>
 					<!-- Idea -->
