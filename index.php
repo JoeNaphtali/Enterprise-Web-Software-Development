@@ -1,38 +1,42 @@
+        <!--Database -->
+        <?php include "includes/dbh.inc.php"; ?>
+        <!-- /.Database -->
+
         <!--Header -->
-<?php include "includes/header.inc.php"; ?>
+        <?php include "includes/header.inc.php"; ?>
         <!-- /.Header -->
 
-		<!-- Navbar -->
+        <!-- Navbar -->
 
-<?php include "includes/navbar.inc.php"; ?>
+        <?php include "includes/navbar.inc.php"; ?>
 
-		<!-- /.Navbar -->
+        <!-- /.Navbar -->
 
-		<!-- Content -->
+        <!-- Content -->
 
-		<div class="container">
+        <div class="container">
 
-			<div class="row">
+            <div class="row">
 
-				<!-- Ideas Column -->
+                <!-- Ideas Column -->
 
-				<?php include "includes/ideas.col.inc.php"; ?>
-                
+                <?php include "includes/ideas.col.inc.php"; ?>
 
-				</div>
 
-				<!-- Ideas Column -->
+            </div>
 
-				<!-- Widgets Column -->
+            <!-- Ideas Column -->
 
-				<?php include "includes/widgets.inc.php"; ?>
+            <!-- Widgets Column -->
 
-				<!-- Widgets Column -->			
-			</div>
-		</div>
+            <?php include "includes/widgets.inc.php"; ?>
 
-		<!-- Content -->
+            <!-- Widgets Column -->
+        </div>
+        </div>
+
+        <!-- Content -->
 
         <!-- Footer -->
-<?php include "includes/footer.inc.php"; ?>
+        <?php include "includes/footer.inc.php"; ?>
         <!-- /.Footer -->
