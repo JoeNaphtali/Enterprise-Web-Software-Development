@@ -1,6 +1,18 @@
 <?php
 
-require 'dbh.inc.php';
+//Create a connection
+
+$servername = "localhost";
+$dBUsername = "root";
+$dBPassword = "";
+
+$conn = mysqli_connect($servername, $dBUsername, $dBPassword);
+
+if (!$conn) {
+	die("Connection failed: ".mysqli_connect_error());
+}
+
+//Create a connection
 
 //Create Database
 
