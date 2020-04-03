@@ -1,17 +1,20 @@
 <div class="col-md-4">
 
     <!-- Search Widget -->
+    
 
     <div class="card my-4">
         <h5 class="card-header">Search</h5>
+        <form action="search.php" method="post">
         <div class="card-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="">
+                <input type="text" class="form-control" placeholder="Search..." name="search">
                 <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">Go!</button>
+                    <button class="btn btn-secondary" type="submit" name="submit">Go!</button>
                 </span>
             </div>
         </div>
+        </form>
     </div>
 
     <!-- Search Widget -->
