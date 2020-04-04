@@ -4,7 +4,7 @@
                 <h1 class="my-4 latest-ideas">Latest Ideas</h1>
             </div>
             <div class="col-sm-6">
-                <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-propose my-4">Propose an Idea</button></a>
+                <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
             </div>
         </div>
         <!-- Retriving Data From DB-->

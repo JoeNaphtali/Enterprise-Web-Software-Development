@@ -45,19 +45,31 @@ echo "Error creating department table: ".$conn->error;
 
 //Create Department Table
 
+//Insert into Department Table
+
+$sql1 = "INSERT INTO department (department_name) VALUES ('accounts'), ('finance'), ('examinations')";
+//Display result if connection is successful
+if($conn->query($sql1) === TRUE) { 
+echo "Departments added successfully | ";
+}
+//Otherwise, show output error
+else {
+echo "Error adding departments: ".$conn->error;
+}
+
+//Insert into Department Table
+
 //Create User Table
 
 $sql1 = "CREATE TABLE user(
     id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    username VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    gender VARCHAR(6) NOT NULL,
-    department VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
-    user_role VARCHAR(50) NOT NULL,
-    FOREIGN KEY (department) REFERENCES department(department_name)
+    department VARCHAR(255) NOT NULL,
+    gender VARCHAR(6) NOT NULL,
+    user_role VARCHAR(50) NOT NULL
     )";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
