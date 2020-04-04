@@ -1,3 +1,19 @@
+<?php
+	session_start();
+	//If user is not logged in, redirect to login page
+    if(!isset($_SESSION['user_id'])){
+        header("Location: login.php");
+    }
+    else {
+        $_SESSION['user_id'] = 1;
+    }
+?>
+
+<!--Database -->
+<?php include "includes/dbh.inc.php"; ?>
+<!-- /.Database -->
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,31 +34,18 @@
 		<!-- Bootstrap core JavaScript -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 		<!-- Local Stylesheet -->
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<!-- Local Script -->
-		<script type="text/javascript" src="../js/script.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 
 	<body>
 
 		<!-- Navbar -->
 
-		<nav class="mb-1 navbar navbar-expand-lg navbar-dark">
-		  <a class="navbar-brand" href="../index.php">Ideas</a>
-		    <ul class="navbar-nav ml-auto">
-		      <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
-		          aria-haspopup="true" aria-expanded="false" href="#">
-		          <i class="fas fa-user"></i> Profile </a>
-		        <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="../account/index.php">My account</a>
-		          <a class="dropdown-item" href="#">Log out</a>
-		        </div>
-		      </li>
-		    </ul>
-		</nav>
+		<?php include "includes/navbar.inc.php"; ?>
 
-		<!-- Navbar -->
+		<!-- /.Navbar -->
 
 		<!-- Content -->
 
@@ -140,102 +143,11 @@
 		      </div>
 		      <!-- Idea Column -->
 
-		      <!-- Widgets Column -->
+            <!-- Widgets Column -->
 
-		      <div class="col-md-4">
+            <?php include "includes/widgets.inc.php"; ?>
 
-		        <!-- Search Widget -->
-
-		        <div class="card my-4">
-		          <h5 class="card-header">Search</h5>
-		          <div class="card-body">
-		            <div class="input-group">
-		              <input type="text" class="form-control" placeholder="Search...">
-		              <span class="input-group-btn">
-		                <button class="btn btn-secondary" type="button">Go!</button>
-		              </span>
-		            </div>
-		          </div>
-		        </div>
-
-		        <!-- Search Widget -->
-
-		        <!-- Categories Widget -->
-
-		        <div class="card my-4">
-		          <h5 class="card-header">Categories</h5>
-		          <div class="card-body">
-		            <div class="row">
-		              <div class="col-lg-6">
-		                <ul class="list-unstyled mb-0">
-		                  <li>
-		                    <a href="#">Category</a>
-		                  </li>
-		                  <li>
-		                    <a href="#">Category</a>
-		                  </li>
-		                  <li>
-		                    <a href="#">Category</a>
-		                  </li>
-		                </ul>
-		              </div>
-		              <div class="col-lg-6">
-		                <ul class="list-unstyled mb-0">
-		                  <li>
-		                    <a href="#">Category</a>
-		                  </li>
-		                  <li>
-		                    <a href="#">Category</a>
-		                  </li>
-		                  <li>
-		                    <a href="#">Category</a>
-		                  </li>
-		                </ul>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-
-		        <!-- Categories Widget -->
-
-		        <!-- Popular Ideas Widget -->
-
-				<div class="card my-4">
-					<h5 class="card-header">Popular Ideas</h5>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li>
-										<a href="#">Latest Ideas</a>
-									</li>
-									<li>
-										<a href="#">Most Viewed</a>
-									</li>
-										<li>
-										<a href="#">Recent Activity</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-lg-6">
-								<ul class="list-unstyled mb-0">
-									<li>
-										<a href="#">Most Upvotes</a>
-									</li>
-									<li>
-										<a href="#">Most Comments</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Popular Ideas Widget -->
-
-		      </div>
-
-		      <!-- Widgets Column -->
+            <!-- Widgets Column -->
 
 		    </div>
 
@@ -243,21 +155,11 @@
 
 		<!-- Content -->
 
-	    <!-- Footer -->
-
-	    <footer class="page-footer font-small">
-
-	      <!-- Copyright -->
-
-	      <div class="footer-copyright text-center py-3">© 2020 Copyright:
-	        <a href="#"> E-Web Development Team 3</a>
-	      </div>
-
-	      <!-- Copyright -->
-
-	    </footer>
-
-	    <!-- Footer -->
+		<!-- Footer -->
+		
+		<?php include "includes/footer.inc.php"; ?>
+		
+        <!-- /.Footer -->
 
 	</body>
 

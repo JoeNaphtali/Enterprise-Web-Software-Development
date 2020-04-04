@@ -1,22 +1,15 @@
 <?php
-    session_start();
-    //If user is not logged in, redirect to login page
-    if(!isset($_SESSION['user_id'])){
-        header("Location: login.php");
-    }
-    else {
-        $_SESSION['user_id'] = 1;
+	session_start();
+	//If user is already logged in, redirect to home page
+    if(isset($_SESSION['user_id'])){
+        header("Location: index.php");
     }
 ?>
-        
-<!--Database -->
-<?php include "includes/dbh.inc.php"; ?>
-<!-- /.Database -->
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home | Ideas</title>
+		<title>Login | Ideas</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -40,42 +33,34 @@
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 
-	<body>
+    <body>
 
-        <!-- Navbar -->
-
-        <?php include "includes/navbar.inc.php"; ?>
-
-        <!-- /.Navbar -->
-
-        <!-- Content -->
+        <!-- Login Form -->
 
         <div class="container">
-
-            <div class="row">
-
-                <!-- Ideas Column -->
-
-                <?php include "includes/ideas.col.inc.php"; ?>
-
-
+            <div class="row justify-content-center">
+                <div class="form col-lg-4 bg-light mt-5 px-0 shadow">
+                    <div class="card-header text-center text-light p-3" id="form-header">Login</div>
+                    <form class="bg-white p-4" action="includes/login.inc.php" method="post">
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input class="form-control" type="email" name="mail" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input class="form-control" type="password" name="pwd" placeholder="Enter your password">
+                        </div>
+                        <button class="btn btn-primary" type="submit" name="login-submit">Login</button>
+                        <p>Don't have an account?
+                            <a href="register.php">Register</a>
+                        </p>
+                    </form>
+                </div>
             </div>
-
-            <!-- Ideas Column -->
-
-            <!-- Widgets Column -->
-
-            <?php include "includes/widgets.inc.php"; ?>
-
-            <!-- Widgets Column -->
-        </div>
-        
         </div>
 
-        <!-- Content -->
+        <!-- /.Login Form -->
 
-        <!-- Footer -->
-
-        <?php include "includes/footer.inc.php"; ?>
-        
-        <!-- /.Footer -->
+    </body>
+    
+</html>

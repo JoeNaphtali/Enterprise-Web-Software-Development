@@ -8,6 +8,10 @@ html {
   height: 100%;
 }
 
+#form-header {
+  background-color: #db4437;
+}
+
 /* Body */
 
 body {
@@ -47,96 +51,6 @@ body {
 .container {
   flex: 1 0 auto;
 }
-
-.btn-propose {
-  height: 48px;
-  background-color: #db4437;
-  color: #fff;
-}
-
-.btn-propose:hover {
-  background-color: #941106;
-  color: #fff;
-}
-
-/* Content */
-
-/* Idea Form */
-
-.propose-heading {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.post-idea {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.post-idea label {
-  font-size: 23px;
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-.post-idea small {
-  font-size: 13px;
-  margin-top: 0px;
-  margin-bottom: 7px;
-}
-
-.post-idea .btn-propose {
-  background-color: #db4437;
-  color: #fff;
-}
-
-.post-idea .btn-propose:hover {
-  background-color: #941106;
-  color: #fff;
-}
-
-/* Idea Form */
-
-/* Profile Form */
-
-.profile {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.profile-heading {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.profile label {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.btn-edit {
-  background-color: #0275d8;
-  color: #fff;
-}
-
-.btn-edit:hover {
-  background-color: #0059a6;
-  color: #fff;
-}
-
-.btn-save {
-  background-color: #5cb85c;
-  color: #fff;
-}
-
-.btn-save:hover {
-  background-color: #378a37;
-  color: #fff;
-}
-
-/* Profile Form */
 
 /* Footer */
 
