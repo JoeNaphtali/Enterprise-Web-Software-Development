@@ -2,7 +2,6 @@
 
 if (isset($_POST['login-submit'])) {
 
-
     require 'dbh.inc.php';
 
     $email = $_POST['mail'];

@@ -32,7 +32,8 @@ mysqli_select_db($conn, "web_app");
 //Create Department Table
 
 $sql1 = "CREATE TABLE department(
-    department_name VARCHAR(255) NOT NULL PRIMARY KEY
+    id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    department_name VARCHAR(255) NOT NULL
     )";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
@@ -85,7 +86,8 @@ echo "Error creating user table: ".$conn->error;
 //Create Category Table
 
 $sql1 = "CREATE TABLE category(
-    category_name VARCHAR(255) NOT NULL PRIMARY KEY
+    id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(255) NOT NULL
     )";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
@@ -102,7 +104,7 @@ echo "Error creating category table: ".$conn->error;
 
 $sql1 = "CREATE TABLE idea(
     id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    category VARCHAR(255) NOT NULL,
+    category_id INT(3) NOT NULL,
     idea_title VARCHAR(255) NOT NULL,
     user__id INT(3) NOT NULL,
     post_user VARCHAR(255) NOT NULL,
@@ -115,7 +117,7 @@ $sql1 = "CREATE TABLE idea(
     upvote_count int(11) NOT NULL,
     downvote_count int(11) NOT NULL,
     FOREIGN KEY (user__id) REFERENCES user(id),
-    FOREIGN KEY (category) REFERENCES category(category_name)
+    FOREIGN KEY (category_id) REFERENCES category(id)
     )";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
