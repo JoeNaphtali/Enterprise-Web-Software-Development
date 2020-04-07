@@ -1,6 +1,6 @@
 <?php
     session_start();
-    //If user is not logged in, redirect to login page
+    /*//If user is not logged in, redirect to login page
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
     }
@@ -9,7 +9,7 @@
     }
     else {
         $_SESSION['user_id'] = 1;
-    }
+    }*/
 ?>
 
 <!--Database -->

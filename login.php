@@ -1,9 +1,9 @@
 <?php
-	session_start();
+	/*session_start();
 	//If user is already logged in, redirect to home page
     if(isset($_SESSION['user_id'])){
         header("Location: index.php");
-    }
+    }*/
 ?>
 
 <!DOCTYPE html>

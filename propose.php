@@ -1,13 +1,19 @@
 <?php
 	session_start();
-	//If user is not logged in, redirect to login page
+	/*//If user is not logged in, redirect to login page
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
-    }
+	}
     else {
         $_SESSION['user_id'] = 1;
-    }
+    }*/
 ?>
+
+<!--Database -->
+
+<?php include "includes/dbh.inc.php"; ?>
+
+<!-- /.Database -->
 
 <!DOCTYPE html>
 <html>
@@ -50,6 +56,12 @@
 
 		<!-- Propose Form -->
 
+		<?php
+        
+        $results = mysqli_query($conn, "SELECT * FROM category");
+
+        ?>
+
 		<div class="container">
             <div class="row justify-content-center">
                 <div class="form col-lg-12 mt-5 px-0 shadow">
@@ -68,7 +80,12 @@
 						<div class="form-group">
 							<label>Catergories</label>
 							<small class="form-text text-muted">Add categories to describe what your question is about</small>
-							<input type="text" class="form-control" name="categories">
+							<select id="inputDepartment" class="form-control" name="categories">
+								<option disabled selected value>Choose...</option>
+								<?php while ($row = mysqli_fetch_array($results)) { ?>
+								<option value="<?php echo $row['category_name']; ?>"><?php echo $row['category_name']; ?></option>
+								<?php } ?>
+							</select>
 						</div>
 						<button type="submit" class="btn btn-primary">Propose Idea</button>
 					</form>
