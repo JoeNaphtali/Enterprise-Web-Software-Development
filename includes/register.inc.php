@@ -49,12 +49,12 @@ if (isset($_POST['register-submit'])) {
         exit();
     }
     // Validate for invalid first name
-    else if (!preg_match("/^[a-zA-Z0-9]*$/", $firstname)) {
+    else if (!preg_match("/^[a-zA-Z]*$/", $firstname)) {
         header("Location: ../register.php?error=invalidfname&lname=".$lastname."&mail=".$email);
         exit();
     }
     // Validate for invalid last name
-    else if (!preg_match("/^[a-zA-Z0-9]*$/", $lastname)) {
+    else if (!preg_match("/^[a-zA-Z]*$/", $lastname)) {
         header("Location: ../register.php?error=invalidlname&fname=".$firstname."&mail=".$email);
         exit();
     }
@@ -65,7 +65,7 @@ if (isset($_POST['register-submit'])) {
     }
     else {
 
-        // Check if email address user typed already exists in database
+        // Check if email address user typed already exists sin database
         $sql = "SELECT email FROM user WHERE email=?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {

@@ -9,7 +9,7 @@
                 <?php
                     //Display 'Manage Categories' option if user is either a QA Manager or an Administrator
                     if ($_SESSION['user_role'] == "qamanager" || $_SESSION['user_role'] == "admin") {
-                        echo '<a class="dropdown-item" href="#">Add Categories</a>';
+                        echo '<a class="dropdown-item" href="managecategories.php">Manage Categories</a>';
                     }
 
                 ?>
