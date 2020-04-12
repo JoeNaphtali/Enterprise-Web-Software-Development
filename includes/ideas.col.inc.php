@@ -7,43 +7,50 @@
                 <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
             </div>
         </div>
-        <!-- Retriving Data From DB-->
-        <?php 
-    $query = "SELECT * FROM idea";
-    $select_all_query = mysqli_query($conn, $query);
-    
-    while($row = mysqli_fetch_assoc($select_all_query)){
-        $idea_title = $row['idea_title'];
-        $idea_content = $row['content'];
-        $idea_date = $row['post_date'];
-        $idea_user = $row['post_user'];
-        $idea_thumbs_up = $row['upvote_count'];
-        $idea_thumbs_down = $row['downvote_count'];
-        
-        ?>
 
-        <!--Displaying data from database-->
         <!-- Idea -->
+
+        <?php
+        
+        // Select all ideas from 'idea' table
+        $results = mysqli_query($conn, "SELECT * FROM idea");
+
+        while ($row = mysqli_fetch_array($results)) { 
+            
+        ?>
 
         <div class="card mb-4">
             <div class="card-body">
-                <h2 class="card-title"><?php echo "$idea_title"; ?></h2>
-                <p class="card-text"><?php echo "$idea_content"; ?></p>
-                <a href="post/post.php">Read More &rarr;</a>
+                <h2 class="card-title"><?php echo $row['idea_title']; ?></h2>
+                <p class="card-text"><?php echo substr(strip_tags($row['content']), 0, 180), "..."; ?></p>
+                <a href="post.php?i_id=<?php echo $row["id"]; ?>">Read More &rarr;</a>
             </div>
             <div>
                 <div class="card-footer text-muted">
-                    Posted on <?php echo "$idea_date"; ?> by <a href="#"><?php echo "$idea_user"; ?></a>
-                    <i class="fas fa-thumbs-up"> <?php echo "$idea_thumbs_up"; ?></i>
-                    <i class="fas fa-thumbs-down"> <?php echo "$idea_thumbs_down"; ?></i>
+                    Posted on <?php echo $row['post_date']; ?> by  
+                    <?php                   
+                    $user_id = $row['user__id'];
+                    // Retrieve user from 'user' table
+                    $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
+                    while ($row2 = mysqli_fetch_array($user_result)) {                    
+                    ?>
+					<a href="#">
+                        <?php 
+                        // Concatenate user firstname and lastname into 'author' variable and display author name
+                        $author = $row2['first_name'] . ' ' . $row2['last_name'];
+                        echo $author;
+                        ?>
+                    </a>
+                    <!-- Closing While loop -->
+                    <?php } ?>
+                    <i class="far fa-thumbs-up"> <?php echo $row['upvote_count']; ?></i>
+                    <i class="far fa-thumbs-down"> <?php echo $row['downvote_count']; ?></i>
                 </div>
             </div>
         </div>
+        <?php } ?>
 
         <!-- /.Idea -->
-
-        <!-- Closing While loop -->
-        <?php } ?>
 
         <!-- Pagination -->
 
@@ -55,3 +62,5 @@
                 <a class="page-link" href="#">Newer &rarr;</a>
             </li>
         </ul>
+
+        <!-- /.Pagination -->

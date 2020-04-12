@@ -9,12 +9,6 @@
     }*/
 ?>
 
-<!--Database -->
-
-<?php include "includes/dbh.inc.php"; ?>
-
-<!-- /.Database -->
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -54,19 +48,19 @@
 
 		<!-- /.Navbar -->
 
+		<!--Database Connection -->
+
+		<?php include "includes/dbh.inc.php"; ?>
+
+		<!-- /.Database Connection -->
+
 		<!-- Propose Form -->
-
-		<?php
-        
-        $results = mysqli_query($conn, "SELECT * FROM category");
-
-        ?>
 
 		<div class="container">
             <div class="row justify-content-center">
                 <div class="form col-lg-12 mt-5 px-0 shadow">
                     <div class="card-header text-center text-light p-3" id="form-header">What's on your mind?</div>
-					<form class="bg-white p-4">
+					<form class="bg-white p-4" action="includes/propose.inc.php" method="post">
 						<div class="form-group">
 							<label>Title</label>
 							<small class="form-text text-muted">Be specific and imagine you’re proposing an idea to another person</small>
@@ -75,19 +69,22 @@
 						<div class="form-group">
 							<label>Body</label>
 							<small class="form-text text-muted">Include all the details about your proposed idea</small>
-							<textarea class="form-control panel-default" id="summernote"></textarea>
+							<textarea class="form-control panel-default" id="summernote" name="content"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Catergories</label>
 							<small class="form-text text-muted">Add categories to describe what your question is about</small>
-							<select id="inputDepartment" class="form-control" name="categories">
+							<select id="inputDepartment" class="form-control" name="category[]">
 								<option disabled selected value>Choose...</option>
-								<?php while ($row = mysqli_fetch_array($results)) { ?>
-								<option value="<?php echo $row['category_name']; ?>"><?php echo $row['category_name']; ?></option>
+								<?php
+								// Select all categories from category table and list them in the dropdown-list      
+        						$results = mysqli_query($conn, "SELECT * FROM category");
+								while ($row = mysqli_fetch_array($results)) { ?>
+								<option value="<?php echo $row['id']; ?>"><?php echo $row['category_name']; ?></option>
 								<?php } ?>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary">Propose Idea</button>
+						<button type="submit" class="btn btn-primary" name="propose-submit">Propose Idea</button>
 					</form>
                 </div>
             </div>

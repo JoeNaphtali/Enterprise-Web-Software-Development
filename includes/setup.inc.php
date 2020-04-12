@@ -104,20 +104,18 @@ echo "Error creating category table: ".$conn->error;
 
 $sql1 = "CREATE TABLE idea(
     id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    category_id INT(3) NOT NULL,
     idea_title VARCHAR(255) NOT NULL,
-    user__id INT(3) NOT NULL,
-    post_user VARCHAR(255) NOT NULL,
-    post_date DATE NOT NULL,
-    attachment BLOB,
     content TEXT NOT NULL,
-    tags VARCHAR(255) NOT NULL,
+    attachment BLOB NOT NULL,
+    category_id INT(3) NOT NULL,
+    user__id INT(3) NOT NULL,
+    post_date DATE NOT NULL,
     comment_count int(11) NOT NULL,
     view_count int(11) NOT NULL,
     upvote_count int(11) NOT NULL,
     downvote_count int(11) NOT NULL,
-    FOREIGN KEY (user__id) REFERENCES user(id),
-    FOREIGN KEY (category_id) REFERENCES category(id)
+    FOREIGN KEY (category_id) REFERENCES category(id),
+    FOREIGN KEY (user__id) REFERENCES user(id)
     )";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
