@@ -12,29 +12,6 @@
     }*/
 ?>
 
-<!--Database -->
-
-<?php include "includes/dbh.inc.php"; ?>
-
-<!-- /.Database -->
-
-<?php 
-
-    $name = "";   
-    $update = false; 
-
-	if (isset($_GET['edit'])) {
-		$id = $_GET['edit'];
-		$update = true;
-		$record = mysqli_query($conn, "SELECT * FROM category WHERE id='$id'");
-
-		if ($record) {
-			$row = mysqli_fetch_array($record);
-			$name = $row['category_name'];
-		}
-	}
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,10 +47,38 @@
 
         <!-- /.Navbar -->
 
+        <!--Database Connection -->
+
+        <?php include "includes/dbh.inc.php"; ?>
+
+        <!-- /.Database Connection -->
+
+        <!-- Display category name in input box when 'edit' button is clicked -->
+
+        <?php 
+
+        $name = "";   
+        $update = false; 
+
+        if (isset($_GET['edit'])) {
+            $id = $_GET['edit'];
+            $update = true;
+            $record = mysqli_query($conn, "SELECT * FROM category WHERE id='$id'");
+
+            if ($record) {
+                $row = mysqli_fetch_array($record);
+                $name = $row['category_name'];
+            }
+        }
+        ?>
+
+        <!-- /.Display category name in input box when 'edit' button is clicked -->
+
         <!-- Manage Catergories Form -->
 
         <?php
-        
+
+        //Retrieve catergories from 'category' table
         $results = mysqli_query($conn, "SELECT * FROM category");
 
         ?>
