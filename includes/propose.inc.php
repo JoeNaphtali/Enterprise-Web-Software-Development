@@ -10,6 +10,7 @@ if (isset($_POST['propose-submit'])) {
 
     $title = $_POST['title'];
     $content = $_POST['content'];
+    
 
     // Check if a category was selected
     if(isset($_POST["category"]))  

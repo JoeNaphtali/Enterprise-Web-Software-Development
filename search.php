@@ -34,7 +34,7 @@
             if (isset($_POST['submit'])){
         
         $search = $_POST['search'];
-        $query = "SELECT * FROM idea WHERE tags LIKE '%$search%'";
+        $query = "SELECT * FROM idea WHERE content LIKE '%$search%'";
         $search_query = mysqli_query($conn, $query);
         
         if(!$search_query){
