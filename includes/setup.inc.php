@@ -100,6 +100,20 @@ echo "Error creating category table: ".$conn->error;
 
 //Create Category Table
 
+//Insert into Category Table
+
+$sql1 = "INSERT INTO category (category_name) VALUES ('Financial'), ('Ethical'), ('Strategic'), ('Academics'), ('Extracurricular'), ('Administrative')";
+//Display result if connection is successful
+if($conn->query($sql1) === TRUE) { 
+echo "Categories added successfully | ";
+}
+//Otherwise, show output error
+else {
+echo "Error adding categories: ".$conn->error;
+}
+
+//Insert into Category Table
+
 //Create Idea Table
 
 $sql1 = "CREATE TABLE idea(
@@ -127,6 +141,27 @@ echo "Error creating idea table: ".$conn->error;
 }
 
 //Create Idea Table
+
+//Create Vote Info Table
+
+$sql1 = "CREATE TABLE vote_info(
+    idea_id INT(3) NOT NULL,
+    user__id INT(3) NOT NULL,
+    vote VARCHAR(255) NOT NULL,
+    FOREIGN KEY (idea_id) REFERENCES idea(id),
+    FOREIGN KEY (user__id) REFERENCES user(id),
+    CONSTRAINT PK_vote_info PRIMARY KEY (idea_id, user__id)
+    )";
+//Display result if connection is successful
+if($conn->query($sql1) === TRUE) { 
+echo "Vote Info table created successfully | ";
+}
+//Otherwise, show output error
+else {
+echo "Error creating vote info table: ".$conn->error;
+}
+
+//Create Vote Info Table
 
 //Create Comment Table
 

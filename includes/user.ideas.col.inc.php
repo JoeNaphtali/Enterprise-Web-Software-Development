@@ -1,7 +1,7 @@
-    <div class="col-md-8">
+<div class="col-md-8">
         <div class="row">
             <div class="col-sm-6">
-                <h1 class="my-4 latest-ideas">Latest Ideas</h1>
+                <h1 class="my-4 latest-ideas">Ideas</h1>
             </div>
             <div class="col-sm-6">
                 <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
@@ -12,8 +12,15 @@
 
         <?php
         
-        // Select all ideas from 'idea' table and order them in chronological order
-        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY post_date DESC");
+        // If user clicks on author's name
+        if(isset($_GET['u_id'])){
+
+            $user__id = $_GET['u_id'];
+
+        }
+        
+        // Select all ideas from 'idea' table that were posted by the author
+        $results = mysqli_query($conn, "SELECT * FROM idea WHERE user__id = $user__id ORDER BY post_date DESC");
 
         while ($row = mysqli_fetch_array($results)) { 
             
@@ -66,8 +73,8 @@
                         ?>
                     </a>
                     &nbsp;
-                    <?php } ?>
                     <!-- Closing While loop -->
+                    <?php } ?>
 
                     <!-- Vote count -->
 
@@ -95,7 +102,7 @@
                     </span>
 
                     <!-- /.Vote count -->
-                    
+
                 </div>
             </div>
         </div>

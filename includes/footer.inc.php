@@ -11,8 +11,7 @@
 				/*//Display link to administrator page is user is an administrator
  				if ($_SESSION['user_role'] == "admin") {
 					 echo '<a href="admin/index.html" style="color: #fff;"> | Administration</a>';
-				 }*/
-			
+				 }*/	
 			?>             
 	      </div>
 

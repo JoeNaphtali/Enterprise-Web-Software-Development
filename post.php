@@ -1,12 +1,13 @@
 <?php
 	session_start();
+	include "includes/voting.inc.php";
 	/*//If user is not logged in, redirect to login page
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
     }
     else {
         $_SESSION['user_id'] = 1;
-    }*/
+	}*/
 ?>
 
 <!DOCTYPE html>
@@ -42,12 +43,6 @@
 
 		<!-- /.Navbar -->
 
-		<!--Database -->
-
-		<?php include "includes/dbh.inc.php"; ?>
-		
-		<!-- /.Database -->
-
 		<!-- Idea -->
 
 		<div class="container">
@@ -63,8 +58,6 @@
 					<?php include "includes/idea.inc.php"; ?>
 
 					<!-- /.Idea -->
-
-		            <hr>
 
 					<!-- Comments Section -->
 

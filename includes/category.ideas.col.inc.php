@@ -1,7 +1,7 @@
-    <div class="col-md-8">
+<div class="col-md-8">
         <div class="row">
             <div class="col-sm-6">
-                <h1 class="my-4 latest-ideas">Latest Ideas</h1>
+                <h1 class="my-4 latest-ideas">Ideas</h1>
             </div>
             <div class="col-sm-6">
                 <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
@@ -11,9 +11,16 @@
         <!-- Idea -->
 
         <?php
+
+        // If user clicks on a category
+        if(isset($_GET['c_id'])){
+
+            $category__id = $_GET['c_id'];
+
+        }
         
-        // Select all ideas from 'idea' table and order them in chronological order
-        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY post_date DESC");
+        // Select all ideas from 'idea' table with a category name the user clicked
+        $results = mysqli_query($conn, "SELECT * FROM idea WHERE category_id = $category__id ORDER BY post_date DESC");
 
         while ($row = mysqli_fetch_array($results)) { 
             
@@ -22,7 +29,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h2 class="card-title"><?php echo $row['idea_title']; ?></h2>
-
+                
                 <!-- Category -->
 
                 <p>
@@ -39,18 +46,11 @@
                     <?php } ?>
                     
                 <!-- /.Category -->
-
-                <!-- Truncate content to 180 characters -->
                 <p class="card-text"><?php echo substr(strip_tags($row['content']), 0, 180), "..."; ?></p>
-
                 <a href="post.php?i_id=<?php echo $row["id"]; ?>">Read More &rarr;</a>
-
             </div>
-
             <div>
-
                 <div class="card-footer text-muted">
-
                     Posted on <?php echo $row['post_date']; ?> by  
                     <?php                   
                     $user_id = $row['user__id'];
@@ -66,8 +66,8 @@
                         ?>
                     </a>
                     &nbsp;
-                    <?php } ?>
                     <!-- Closing While loop -->
+                    <?php } ?>
 
                     <!-- Vote count -->
 
@@ -95,7 +95,7 @@
                     </span>
 
                     <!-- /.Vote count -->
-                    
+
                 </div>
             </div>
         </div>

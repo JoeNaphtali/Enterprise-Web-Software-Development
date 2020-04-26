@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home | Ideas</title>
+		<title>User's Ideas | Ideas</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -55,14 +55,14 @@
 
             <div class="row">
 
-                <!-- Ideas Column -->
+                <!-- Filtered Ideas Column -->
 
-                <?php include "includes/ideas.col.inc.php"; ?>
+                <?php include "includes/user.ideas.col.inc.php"; ?>
 
 
             </div>
 
-            <!-- Ideas Column -->
+            <!-- Filtered Ideas Column -->
 
             <!-- Widgets Column -->
 
