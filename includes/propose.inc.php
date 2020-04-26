@@ -3,26 +3,30 @@
 // Start session in order to use the session variable 'user_id'
 session_start();
 
+// If user clicks the 'Propose' button
 if (isset($_POST['propose-submit'])) {
 
     // Database connection
     require 'dbh.inc.php';
 
+    // Store the title the user entered in the 'title' variable
     $title = $_POST['title'];
+    // Store the text the user entered in the 'content' variable
     $content = $_POST['content'];
     
-
     // Check if a category was selected
     if(isset($_POST["category"]))  
     { 
-        // Retrieve selected category 
+        // Retrieve selected category and store it's value in the 'category_id' variable
         foreach ($_POST['category'] as $category_id);            
     }
     else {
+        // Display error if user did not select a category
         header("Location: ../propose.php?error=emptycategory&title=".$title."&content=".$content);
         exit();
     }
     
+    // Store user id into the variable 'user' using a session variable
     $user_id = $_SESSION['user_id'];
     $date = date('Y-m-d');
 
@@ -36,15 +40,18 @@ if (isset($_POST['propose-submit'])) {
         // Insert idea into 'idea' table
         $sql = "INSERT INTO idea (idea_title, content, category_id, user__id, post_date) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
-        // Check for sql syntax error
+        // Display error if there is an sql syntax error in the 'INSERT INTO' statement
         if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../propose.php?error=sqlerror");
         exit();
         }
         else {
+        // Bind varibales the variables 'stmt' and 'name' to a prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "sssss", $title, $content, $category_id, $user_id, $date);
+        // Execute prepared statement
         mysqli_stmt_execute($stmt);
-        header("Location: ../propose.php?proposal=success");
+        // Return user to the home page with a success message
+        header("Location: ../index.php?proposal=success");
         exit();
         }
     }

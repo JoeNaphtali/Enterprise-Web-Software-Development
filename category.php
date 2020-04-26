@@ -1,7 +1,23 @@
+<?php
+    session_start();
+    include "includes/voting.inc.php";
+    /*//If user is not logged in, redirect to login page
+    if(!isset($_SESSION['user_id'])){
+        header("Location: login.php");
+    }
+    else {
+        $_SESSION['user_id'] = 1;
+    }*/
+?>
+        
+<!--Database -->
+<?php //include "includes/dbh.inc.php"; ?>
+<!-- /.Database -->
+
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home | Ideas</title>
+		<title>Category | Ideas</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -26,3 +42,41 @@
 	</head>
 
 	<body>
+
+        <!-- Navbar -->
+
+        <?php include "includes/navbar.inc.php"; ?>
+
+        <!-- /.Navbar -->
+
+        <!-- Content -->
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Filtered Ideas Column -->
+
+                <?php include "includes/category.ideas.col.inc.php"; ?>
+
+
+            </div>
+
+            <!-- Filtered Ideas Column -->
+
+            <!-- Widgets Column -->
+
+            <?php include "includes/widgets.inc.php"; ?>
+
+            <!-- Widgets Column -->
+        </div>
+        
+        </div>
+
+        <!-- Content -->
+
+        <!-- Footer -->
+
+        <?php include "includes/footer.inc.php"; ?>
+        
+        <!-- /.Footer -->

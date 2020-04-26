@@ -24,41 +24,16 @@
     <div class="card my-4">
         <h5 class="card-header">Categories</h5>
         <div class="card-body">
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
-
-                        <?php 
-                        $query = "SELECT * FROM category";
-                        $select_all_query = mysqli_query($conn, $query);
-                        
-                         while($row = mysqli_fetch_assoc($select_all_query)){
-                            $category_name = $row['category_name'];
-                            echo "<li><a href='#'>{$category_name}</a></li>";
-                         }                      
-                        ?>
-
-
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
-
-                        <!-- Todo-->
-                        <li>
-                            <a href="#">Category</a>
-                        </li>
-                        <li>
-                            <a href="#">Category</a>
-                        </li>
-                        <li>
-                            <a href="#">Category</a>
-                        </li>
-                        <!-- /.Todo-->
-
-                    </ul>
-                </div>
-            </div>
+            <?php
+                // Select all the categories from the 'category' table
+                $query = "SELECT * FROM category";
+                $select_all_query = mysqli_query($conn, $query);                       
+                while($row = mysqli_fetch_assoc($select_all_query)){
+                $category_name = $row['category_name'];
+                $category_id = $row['id'];               
+            ?>
+            <a href="category.php?c_id=<?php echo $category_id; ?>"> | <?php echo $category_name ?></a>
+            <?php } ?>
         </div>
     </div>
 
@@ -73,7 +48,7 @@
                 <div class="col-lg-6">
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#">Latest Ideas</a>
+                            <a href="index.php">Latest Ideas</a>
                         </li>
                         <li>
                             <a href="#">Most Viewed</a>
