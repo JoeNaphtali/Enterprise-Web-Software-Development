@@ -1,4 +1,6 @@
 <?php
+	// Database Connection
+	include "includes/dbh.inc.php";
 	// Start Session
 	/*session_start();
 	//If user is already logged in, redirect to home page
@@ -70,21 +72,24 @@
                         <div class="form-row">
 				            <div class="form-group col-md-6">
 				                <label>Department</label>
-				                    <select id="inputDepartment" class="form-control" name="dprtmnt[]">
-                                        <option disabled selected value>Choose...</option>
-				                        <option value='examinations'>Examninations Department</option>
-                                        <option value='accounts'>Accounts Department</option>
-                                        <option value='finance'>Finance Department</option>
-				                    </select>
+								<select id="inputDepartment" class="form-control" name="dprtmnt[]">
+									<option disabled selected value>Choose...</option>
+									<?php
+									// Select all departments from the department table and list them in the dropdown-list      
+									$results = mysqli_query($conn, "SELECT * FROM department");
+									while ($row = mysqli_fetch_array($results)) { ?>
+									<option value="<?php echo $row['id']; ?>"><?php echo $row['department_name']; ?></option>
+									<?php } ?>
+								</select>
 				            </div>
 				            <div class="form-group col-md-6">
 				                <label>Gender</label>
-				                    <select id="inputDepartment" class="form-control" name="gndr[]">
-				                        <option disabled selected value>Choose...</option>
-                                        <option value='male'>Male</option>
-                                        <option value='female'>Female</option>
-                                        <option value='other'>Other</option>
-				                    </select>
+				                <select id="inputGender" class="form-control" name="gndr[]">
+				                    <option disabled selected value>Choose...</option>
+                                    <option value='male'>Male</option>
+                                    <option value='female'>Female</option>
+                                    <option value='other'>Other</option>
+				                </select>
 				            </div>
 		          		</div>
 						<button type="submit" class="btn btn-primary" name="register-submit">Register</button>

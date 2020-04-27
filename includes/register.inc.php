@@ -25,7 +25,6 @@ if (isset($_POST['register-submit'])) {
         header("Location: ../register.php?error=emptydprtmnt&fname=".$firstname."&lname=".$lastname."&mail=".$email."&gndr=".$gender);
         exit();
     }
-
     // Check if the user selected a gender 
     if(isset($_POST["gndr"]))  
     { 
@@ -94,7 +93,7 @@ if (isset($_POST['register-submit'])) {
             else {
 
                 //Insert user details into the database
-                $sql = "INSERT INTO user (first_name, last_name, email, user_password, department, gender, user_role) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO user (first_name, last_name, email, user_password, department_id, gender, user_role) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 // Check for sql syntax error
                 if (!mysqli_stmt_prepare($stmt, $sql)) {

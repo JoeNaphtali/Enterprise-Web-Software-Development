@@ -73,7 +73,7 @@
 						<div class="form-group">
 							<label>Catergories</label>
 							<small class="form-text text-muted">Add categories to describe what your question is about</small>
-							<select id="inputDepartment" class="form-control" name="category[]">
+							<select id="inputCategory" class="form-control" name="category[]">
 								<option disabled selected value>Choose...</option>
 								<?php
 								// Select all categories from category table and list them in the dropdown-list      
