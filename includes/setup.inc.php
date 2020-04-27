@@ -123,13 +123,15 @@ $sql1 = "CREATE TABLE idea(
     attachment BLOB NOT NULL,
     category_id INT(3) NOT NULL,
     user__id INT(3) NOT NULL,
+    department_id INT(3) NOT NULL,
     post_date DATE NOT NULL,
     comment_count int(11) NOT NULL,
     view_count int(11) NOT NULL,
     upvote_count int(11) NOT NULL,
     downvote_count int(11) NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category(id),
-    FOREIGN KEY (user__id) REFERENCES user(id)
+    FOREIGN KEY (user__id) REFERENCES user(id),
+    FOREIGN KEY (department_id) REFERENCES department(id)
     )";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
