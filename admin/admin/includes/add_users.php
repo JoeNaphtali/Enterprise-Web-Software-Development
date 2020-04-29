@@ -8,7 +8,7 @@ if (isset($_POST["add_users_btn"])) {
     $lastname = $_POST['lname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $user_role = "user_role";
+    $user_role = ['user_role'];
 
     // Check if department is selected 
    
@@ -22,14 +22,14 @@ if (isset($_POST["add_users_btn"])) {
         header("Location: ../add_user.php?error=emptyDepartments&fname=".$firstname."&lname=".$lastname."&email=".$email."&gender=".$gender);
         exit();
     }
-    if(isset($_POST["User_roles"]))  
+    if(isset($_POST["User_role"]))  
     { 
         // Retrieve each selected option 
         
-        foreach ($_POST['User_roles'] as $user_role);            
+        foreach ($_POST['User_role'] as $user_role);            
     }
     else {
-        header("Location: ../add_user.php?error=emptyDepartments&fname=".$firstname."&lname=".$lastname."&email=".$email."&gender=".$gender);
+        header("Location: ../add_user.php?error=emptyuser_role&fname=".$firstname."&lname=".$lastname."&email=".$email."&gender=".$gender);
         exit();
     }
 
@@ -89,7 +89,7 @@ if (isset($_POST["add_users_btn"])) {
             }
             else {
                 //Inserting user details into database
-                $sql = "INSERT INTO user (first_name, last_name, email, user_password, department, gender, user_role) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO user (first_name, last_name, email, user_password, department_id, gender, user_role) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 // Check for sql syntax error
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -115,7 +115,7 @@ if (isset($_POST["add_users_btn"])) {
     mysqli_close($conn);
 }
 else {
-    // Send user back to registration page, if page was accessed without clicking 'add_user' button
+   
     header("Location: ../add_user.php");
     exit();
 }

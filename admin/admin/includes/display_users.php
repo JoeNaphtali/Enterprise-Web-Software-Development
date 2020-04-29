@@ -22,7 +22,7 @@
             $First_name = $row['first_name'];
             $Last_name = $row['last_name'];
             $Email = $row['email'];         
-            $Department = $row['department'];
+            $Department = $row['department_id'];
             $Gender = $row['gender'];
             $User_role = $row['user_role'];
         

@@ -38,8 +38,8 @@
 			   </select>
 		  </div>
 		  <div class="input-group">
-	           <label for="User_roles">User Roles:</label>
-               <select id="User_roles" name="User_roles[]">
+	           <label for="User_role">User Role:</label>
+               <select id="User_role" name="User_role[]">
 			      <option disabled selected value>Choose...</option>
                   <option value="Quality Assurance Manager">Quality Assurance Manager</option>
                   <option value="Quality Assurance Co-ordinator">Quality Assurance Co-ordinator</option>
