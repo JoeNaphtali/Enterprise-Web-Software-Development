@@ -11,14 +11,22 @@
         <!-- Idea -->
 
         <?php
-        
+          if (isset($_GET['idea'])) {
+            $idea = $_GET['idea'];
+        } else {
+            $idea = 1;
+        }
+            $no_of_records_per_page = 5;
+            $offset = ($idea-1) * $no_of_records_per_page; 
+    
         // Select all ideas from 'idea' table and order them in chronological order
-        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY post_date DESC");
+        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY post_date DESC LIMIT $offset, $no_of_records_per_page");
 
         while ($row = mysqli_fetch_array($results)) { 
             
+            
         ?>
-
+         
         <div class="card mb-4">
             <div class="card-body">
                 <h2 class="card-title"><?php echo $row['idea_title']; ?></h2>
@@ -112,14 +120,23 @@
         <!-- /.Idea -->
 
         <!-- Pagination -->
-
-        <ul class="pagination justify-content-center mb-4">
-            <li class="page-item">
-                <a class="page-link" href="#">&larr; Older</a>
-            </li>
-            <li class="page-item disabled">
-                <a class="page-link" href="#">Newer &rarr;</a>
-            </li>
-        </ul>
-
+       
+             <?php
+               
+            $total_pages_sql = "SELECT COUNT(*) FROM idea";
+            $result = mysqli_query($conn,$total_pages_sql);
+            $total_rows = mysqli_fetch_array($result)[0];
+            $total_pages = ceil($total_rows / $no_of_records_per_page);
+             ?> 
+            <ul class="pagination justify-content-center mb-4">
+            <li class="page-link"><a href="?idea=1">First</a></li>
+           <li class="page-link"<?php if($idea <= 1){ echo 'disabled'; } ?>>
+             <a href="<?php if($idea <= 1){ echo '#'; } else { echo "?idea=".($idea - 1); } ?>">Prev</a>
+          </li>
+         <li class="page-link"<?php if($idea >= $total_pages){ echo 'disabled'; } ?>>
+             <a href="<?php if($idea >= $total_pages){ echo '#'; } else { echo "?idea=".($idea + 1); } ?>">Next</a>
+         </li>
+           <li class="page-link"><a href="?idea=<?php echo $total_pages; ?>">Last</a></li>
+         </ul>
+     
         <!-- /.Pagination -->
