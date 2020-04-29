@@ -3,10 +3,12 @@
                     // If user clicks the 'Read More' link
 					if(isset($_GET['i_id'])){
 
-						$idea_id = $_GET['i_id'];
+                        $idea_id = $_GET['i_id'];
+                        // Increase page view count by 1 when user accesses specific idea page
+                        mysqli_query($conn, "UPDATE idea SET view_count = view_count + 1 WHERE id=$idea_id");
 
-					}
-
+                    }
+                    
                     // Select all ideas for the 'idea' table
 					$results = mysqli_query($conn, "SELECT * FROM idea WHERE id=$idea_id");
 
@@ -91,7 +93,11 @@
                         <?php endif ?>
                         data-id="<?php echo $idea_id ?>" style="cursor: pointer; color:blue;">thumb_up</i>
                         <span class="likes" style="font-size: 24px; color:blue;">
-                            <?php echo getLikes($idea_id); ?>
+                            <?php echo getLikes($idea_id); 
+                            $likes = getLikes($idea_id);
+                            $id = $idea_id;
+                            mysqli_query($conn, "UPDATE idea SET upvote_count='$likes' WHERE id='$id'");
+                            ?>
                         </span>
                         
                         <!-- No breaking space between like and dislike buttons -->
@@ -105,7 +111,11 @@
                         <?php endif ?>
                         data-id="<?php echo $idea_id ?>" style="cursor: pointer; color:red;">thumb_down</i>
                         <span class="dislikes" style="font-size: 24px; color:red;">
-                            <?php echo getDislikes($idea_id); ?>
+                            <?php echo getDislikes($idea_id); 
+                            $dislikes = getDislikes($idea_id);
+                            $id = $idea_id;
+                            mysqli_query($conn, "UPDATE idea SET downvote_count='$dislikes' WHERE id='$id'");
+                            ?>
                         </span>
 
                     </div>

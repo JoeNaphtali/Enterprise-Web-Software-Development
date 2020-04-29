@@ -7,6 +7,7 @@ if(isset($_POST['submit_comment'])){
     
     $query = "INSERT INTO comment (idea_id, user__id, content, comment_date)";
     $query .= "VALUES ($idea_id, $user_id, '{$comment_content}', now())";
+    mysqli_query($conn, "UPDATE idea SET view_count = view_count - 1 WHERE id=$idea_id");
     
     
     $submit_comment_query = mysqli_query($conn, $query);
