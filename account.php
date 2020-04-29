@@ -1,5 +1,8 @@
 <?php
+	// Start session
 	session_start();
+	// Database connection
+    include "includes/dbh.inc.php";
 	/*//If user is not logged in, redirect to login page
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
@@ -49,49 +52,118 @@
 		<!-- /.Navbar -->
 
 		<!-- Account Form -->
+		<?php 
+ 
+        $update = false; 
+
+        if (isset($_GET['edit'])) {
+            $update = true;
+		}
+		
+        ?>
+
+		<?php
+
+		$user_id = $_SESSION['user_id'];
+
+        //Retrieve user from 'user' table
+		$results = mysqli_query($conn, "SELECT * FROM user WHERE id = $user_id");
+		
+		$row = mysqli_fetch_array($results);
+
+        ?>
 
 		<div class="container">
             <div class="row justify-content-center">
                 <div class="form col-lg-8 mt-5 px-0 shadow">
                     <div class="card-header text-center text-light p-3" id="form-header">My Account</div>
-		        	<form class="bg-white p-4">
+		        	<form class="bg-white p-4" action="includes/editaccount.inc.php" method="post">
 		          		<div class="form-row">
 		            		<div class="form-group col-md-6">
 								<label>First Name</label>
-								<input type="text" class="form-control" name="">
+								<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+								<?php if ($update == true): ?>
+								<input type="text" class="form-control" name="fname" value="<?php echo $row['first_name']; ?>">
+								<?php else: ?>
+								<input type="text" class="form-control" name="fname" value="<?php echo $row['first_name']; ?>" disabled>
+								<?php endif ?>
 							</div>
 							<div class="form-group col-md-6">
 								<label>Last Name</label>
-								<input type="text" class="form-control" name="">
+								<?php if ($update == true): ?>
+								<input type="text" class="form-control" name="lname" value="<?php echo $row['last_name']; ?>">
+								<?php else: ?>
+								<input type="text" class="form-control" name="lname" value="<?php echo $row['last_name']; ?>" disabled>
+								<?php endif ?>
 							</div>
 		          		</div>
-		          		<div class="form-row">
-		            		<div class="form-group col-md-6">
-								<label>Email Address</label>
-								<input type="text" class="form-control" name="">
-							</div>
-							<div class="form-group col-md-6">
-								<label>Password</label>
-								<input type="text" class="form-control" name="">
-							</div>
-		          		</div>
+		            	<div class="form-group">
+							<label>Email Address</label>
+							<?php if ($update == true): ?>
+							<input type="text" class="form-control" name="mail" value="<?php echo $row['email']; ?>">
+							<?php else: ?>
+							<input type="text" class="form-control" name="mail" value="<?php echo $row['email']; ?>" disabled>
+							<?php endif ?>
+						</div>
 		          		<div class="form-row">
 				            <div class="form-group col-md-6">
-				            <label>Department</label>
-				            <select id="inputDepartment" class="form-control">
-				                <option selected>Choose...</option>
-				                <option>...</option>
-				            </select>
+								<label>Enter New Password</label>
+								<?php if ($update == true): ?>
+								<input type="password" class="form-control" name="pwd">
+								<?php else: ?>
+								<input type="password" class="form-control" name="pwd" disabled>
+								<?php endif ?>
 				            </div>
 				            <div class="form-group col-md-6">
-				              <label>Gender</label>
-				                <select id="inputDepartment" class="form-control">
-				                  <option selected>Choose...</option>
-				                  <option>...</option>
-				                </select>
+								<label>Confirm New Password</label>
+								<?php if ($update == true): ?>
+								<input type="password" class="form-control" name="pwd-repeat">
+								<?php else: ?>
+								<input type="password" class="form-control" name="pwd-repeat" disabled>
+								<?php endif ?>
 				            </div>
-		          		</div>
-						<button type="submit" class="btn btn-primary">Edit Details</button>
+                        </div>
+                        <div class="form-row">
+				            <div class="form-group col-md-6">
+								<label>Department</label>
+								<?php if ($update == true): ?>
+								<select id="inputDepartment" class="form-control" name="dprtmnt[]">
+									<option disabled selected value>Choose...</option>
+									<?php
+									// Select all departments from the department table and list them in the dropdown-list      
+									$results = mysqli_query($conn, "SELECT * FROM department");
+									while ($row = mysqli_fetch_array($results)) { ?>
+									<option value="<?php echo $row['id']; ?>"><?php echo $row['department_name']; ?></option>
+									<?php } ?>
+								</select>
+								<?php else: ?>
+								<select id="inputDepartment" class="form-control" name="dprtmnt[]" disabled>
+									<option disabled selected value>Choose...</option>						
+								</select>
+								<?php endif ?>
+				            </div>
+				            <div class="form-group col-md-6">
+								<label>Gender</label>
+								<?php if ($update == true): ?>
+				                <select id="inputGender" class="form-control" name="gndr[]">
+				                    <option disabled selected value>Choose...</option>
+                                    <option value='male'>Male</option>
+                                    <option value='female'>Female</option>
+                                    <option value='other'>Other</option>
+								</select>
+								<?php else: ?>
+								<select id="inputGender" class="form-control" name="gndr[]" disabled>
+				                    <option disabled selected value>Choose...</option>
+								</select>
+								<?php endif ?>
+				            </div>
+						</div>
+						<?php if ($update == true): ?>
+						<button class="btn btn-warning" type="submit" name="update-account">Update</button>
+                        <a href="account.php" class="btn btn-info" name="cancel">Cancel</a>
+						<?php else: ?>
+						<a href="account.php?edit=<?php echo $user_id; ?>" class="btn btn-edit btn-primary" style="color: #fff;"><i class="fas fa-edit"></i> Edit</a>
+						<?php endif ?>
 		        	</form>
                 </div>
             </div>

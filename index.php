@@ -11,6 +11,7 @@
     else {
         $_SESSION['user_id'] = 1;
     }*/
+
     
 ?>
 
@@ -53,13 +54,55 @@
 
         <div class="container">
 
-            <div class="row">
+            <!-- Ideas Column -->
 
-                <!-- Ideas Column -->
+            <div class="row">          
 
-                <?php include "includes/ideas.col.inc.php"; ?>
+                <?php
+                // If user clicks on a category, display ideas under that specific category
+                if(isset($_GET['c_id'])){
+                        
+                    include "includes/category.ideas.col.inc.php";
 
+                }
+                // If user clicks on an author, display ideas by that specific author
+                else if (isset($_GET['u_id'])) {
+                    
+                    include "includes/user.ideas.col.inc.php";
 
+                }
+                // If user clicks the 'Most Viewed' link, display all ideas and order of number of page views
+                else if (isset($_GET['mostviewed'])) {
+                    
+                    include "includes/mostviewed.ideas.col.inc.php";
+
+                }
+                // If user clicks the 'Most Comments' link, display all ideas and order of number of comments
+                else if (isset($_GET['mostcomments'])) {
+                    
+                    include "includes/mostcomments.ideas.col.inc.php";
+
+                }
+                // If user clicks the 'Most Upvotes' link, display all ideas and order of number of upvotes
+                else if (isset($_GET['mostupvotes'])) {
+                    
+                    include "includes/mostupvotes.ideas.col.inc.php";
+
+                }
+                // If user clicks the 'Most Downvotes' link, display all ideas and order of number of downvotes
+                else if (isset($_GET['mostdownvotes'])) {
+                    
+                    include "includes/mostdownvotes.ideas.col.inc.php";
+
+                }
+                // Display all ideas
+                else {
+                
+                    include "includes/ideas.col.inc.php";
+
+                }               
+                ?>
+            
             </div>
 
             <!-- Ideas Column -->
@@ -69,11 +112,12 @@
             <?php include "includes/widgets.inc.php"; ?>
 
             <!-- Widgets Column -->
+
         </div>
         
         </div>
 
-        <!-- Content -->
+        <!-- Content -->    
 
         <!-- Footer -->
 

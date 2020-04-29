@@ -32,7 +32,7 @@
                 $category_name = $row['category_name'];
                 $category_id = $row['id'];               
             ?>
-            <a href="category.php?c_id=<?php echo $category_id; ?>"> | <?php echo $category_name ?></a>
+            <a href="index.php?c_id=<?php echo $category_id; ?>"> | <?php echo $category_name ?></a>
             <?php } ?>
         </div>
     </div>
@@ -51,20 +51,23 @@
                             <a href="index.php">Latest Ideas</a>
                         </li>
                         <li>
-                            <a href="#">Most Viewed</a>
+                            <a href="#">Recent Activity</a>
                         </li>
                         <li>
-                            <a href="#">Recent Activity</a>
+                            <a href="index.php?mostviewed">Most Viewed</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#">Most Upvotes</a>
+                            <a href="index.php?mostupvotes">Most Upvotes</a>
                         </li>
                         <li>
-                            <a href="#">Most Comments</a>
+                            <a href="index.php?mostdownvotes">Most Downvotes</a>
+                        </li>
+                        <li>
+                            <a href="index.php?mostcomments">Most Comments</a>
                         </li>
                     </ul>
                 </div>

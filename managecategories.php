@@ -1,5 +1,8 @@
 <?php
+    // Start session
     session_start();
+    // Database connection
+    include "includes/dbh.inc.php";
     /*//If user is not logged in, redirect to login page
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
@@ -46,12 +49,6 @@
         <?php include "includes/navbar.inc.php"; ?>
 
         <!-- /.Navbar -->
-
-        <!--Database Connection -->
-
-        <?php include "includes/dbh.inc.php"; ?>
-
-        <!-- /.Database Connection -->
 
         <!-- Display category name in input box when 'edit' button is clicked -->
 

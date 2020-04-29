@@ -1,7 +1,7 @@
-    <div class="col-md-8">
+<div class="col-md-8">
         <div class="row">
             <div class="col-sm-6">
-                <h1 class="my-4 latest-ideas">Latest Ideas</h1>
+                <h1 class="my-4 latest-ideas">Most Downvotes</h1>
             </div>
             <div class="col-sm-6">
                 <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
@@ -10,10 +10,10 @@
 
         <!-- Idea -->
 
-        <?php
+        <?php    
         
-        // Select all ideas from 'idea' table and order them in chronological order
-        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY post_date DESC");
+        // Select all ideas from the 'idea' table and order them by the number of downvotes
+        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY downvote_count DESC");
 
         while ($row = mysqli_fetch_array($results)) { 
             
@@ -22,7 +22,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h2 class="card-title"><?php echo $row['idea_title']; ?></h2>
-
+                
                 <!-- Category -->
 
                 <p>
@@ -39,18 +39,11 @@
                     <?php } ?>
                     
                 <!-- /.Category -->
-
-                <!-- Truncate content to 180 characters -->
                 <p class="card-text"><?php echo substr(strip_tags($row['content']), 0, 180), "..."; ?></p>
-
                 <a href="post.php?i_id=<?php echo $row["id"]; ?>">Read More &rarr;</a>
-
             </div>
-
             <div>
-
                 <div class="card-footer text-muted">
-
                     Posted on <?php echo $row['post_date']; ?> by  
                     <?php                   
                     $user_id = $row['user__id'];
@@ -66,8 +59,8 @@
                         ?>
                     </a>
                     &nbsp;
-                    <?php } ?>
                     <!-- Closing While loop -->
+                    <?php } ?>
 
                     <!-- Vote count -->
 
@@ -95,7 +88,7 @@
                     <?php endif ?>
                     data-id="<?php echo $row['id'] ?>" style="cursor: pointer; color:red; font-size: 18px;">thumb_down</i>
                     <span class="dislikes" style="font-size: 18px; color:red;">
-                        <?php echo getDislikes($row['id']);
+                        <?php echo getDislikes($row['id']); 
                         $dislikes = getDislikes($row['id']);
                         $id = $row['id'];
                         mysqli_query($conn, "UPDATE idea SET downvote_count='$dislikes' WHERE id='$id'");
@@ -103,7 +96,7 @@
                     </span>
 
                     <!-- /.Vote count -->
-                    
+
                 </div>
             </div>
         </div>
