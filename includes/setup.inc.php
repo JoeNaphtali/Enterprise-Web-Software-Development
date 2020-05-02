@@ -48,7 +48,11 @@ echo "Error creating department table: ".$conn->error;
 
 //Insert into Department Table
 
-$sql1 = "INSERT INTO department (department_name) VALUES ('Accounts'), ('Finance'), ('Examinations')";
+$sql1 = "INSERT INTO department (department_name) 
+VALUES ('Accounts'), ('Finance'), ('Examinations'), ('Administration'), 
+('Natural Sciences'), ('Education'), ('Agricultural Sciences'),
+('Humanities'), ('Business'), ('Medicine'),
+('Law'), ('Computer Science')";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
 echo "Departments added successfully | ";
@@ -130,6 +134,7 @@ $sql1 = "CREATE TABLE idea(
     view_count int(11) NOT NULL,
     upvote_count int(11) NOT NULL,
     downvote_count int(11) NOT NULL,
+    anonymous boolean NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category(id),
     FOREIGN KEY (user__id) REFERENCES user(id),
     FOREIGN KEY (department_id) REFERENCES department(id)

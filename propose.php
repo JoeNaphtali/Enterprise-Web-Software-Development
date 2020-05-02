@@ -83,6 +83,10 @@
 								<?php } ?>
 							</select>
 						</div>
+						<div class="custom-control custom-checkbox form-group">
+							<input type="checkbox" class="custom-control-input" id="customCheck" name="anonymous">
+							<label class="custom-control-label" for="customCheck">Post anonymously?</label>
+						</div>
 						<button type="submit" class="btn btn-primary" name="propose-submit">Propose Idea</button>
 					</form>
                 </div>

@@ -26,21 +26,29 @@
                     
 					<p class="lead">
                     Proposed by
-                    <?php                   
-                    $user_id = $row['user__id'];
-                    // Retrieve user from 'user' table
-                    $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
-                    while ($row2 = mysqli_fetch_array($user_result)) {                    
-                    ?>
-					<a href="user.php?u_id=<?php echo $row2["id"]; ?>">
-                        <?php 
-                        // Concatenate user firstname and lastname into 'author' variable and display author name
-                        $author = $row2['first_name'] . ' ' . $row2['last_name'];
-                        echo $author;
+                    <?php
+                    // If user proposed idea anonymously display author as 'Anonymous'
+                    if ($row['anonymous'] == true) { 
+                    ?>                       
+                        Anonymous
+                        <?php } else { ?>
+                        <?php                   
+                        $user_id = $row['user__id'];
+                        // Retrieve user from 'user' table
+                        $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
+                        while ($row2 = mysqli_fetch_array($user_result)) {                    
                         ?>
-                    </a>
-                    </p>
-                    <!-- Close While loop -->
+                        <a href="user.php?u_id=<?php echo $row2["id"]; ?>">
+                            <?php 
+                            // Concatenate user firstname and lastname into 'author' variable and display author name
+                            $author = $row2['first_name'] . ' ' . $row2['last_name'];
+                            echo $author;
+                            ?>
+                        </a>
+                        </p>
+                        <!-- Close While loop -->
+                        <?php } ?>
+                    <!-- Closing If statement -->
                     <?php } ?>
 
                     <!-- /.Author -->
