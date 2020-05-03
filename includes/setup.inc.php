@@ -179,6 +179,7 @@ $sql1 = "CREATE TABLE comment(
     user__id INT(3) NOT NULL,
     content TEXT NOT NULL,
     comment_date DATE NOT NULL,
+    anonymous boolean NOT NULL,
     FOREIGN KEY (idea_id) REFERENCES idea(id),
     FOREIGN KEY (user__id) REFERENCES user(id)
     )";

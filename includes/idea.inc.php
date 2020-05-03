@@ -9,7 +9,7 @@
 
                     }
                     
-                    // Select all ideas for the 'idea' table
+                    // Select idea from the 'idea' table
 					$results = mysqli_query($conn, "SELECT * FROM idea WHERE id=$idea_id");
 
 					while ($row = mysqli_fetch_array($results)) { 

@@ -39,8 +39,8 @@ if (isset($_POST['propose-submit'])) {
     $date = date('Y-m-d');
 
     // Validate for empty fields
-    if (empty($title) || empty($content)) {
-        header("Location: ../propose.php?error=emptyfields");
+    if (empty($content)) {
+        header("Location: ../propose.php?error=emptycontent");
         exit();
     }
     else {

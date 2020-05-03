@@ -13,7 +13,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>My Account | Ideas</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -56,6 +56,7 @@
  
         $update = false; 
 
+		// If user clicked the edit button
         if (isset($_GET['edit'])) {
             $update = true;
 		}
@@ -83,7 +84,7 @@
 								<label>First Name</label>
 								<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 								<?php if ($update == true): ?>
-								<input type="text" class="form-control" name="fname" value="<?php echo $row['first_name']; ?>">
+								<input type="text" class="form-control" name="fname" required value="<?php echo $row['first_name']; ?>">
 								<?php else: ?>
 								<input type="text" class="form-control" name="fname" value="<?php echo $row['first_name']; ?>" disabled>
 								<?php endif ?>
@@ -91,7 +92,7 @@
 							<div class="form-group col-md-6">
 								<label>Last Name</label>
 								<?php if ($update == true): ?>
-								<input type="text" class="form-control" name="lname" value="<?php echo $row['last_name']; ?>">
+								<input type="text" class="form-control" name="lname" required value="<?php echo $row['last_name']; ?>">
 								<?php else: ?>
 								<input type="text" class="form-control" name="lname" value="<?php echo $row['last_name']; ?>" disabled>
 								<?php endif ?>
@@ -100,7 +101,7 @@
 		            	<div class="form-group">
 							<label>Email Address</label>
 							<?php if ($update == true): ?>
-							<input type="text" class="form-control" name="mail" value="<?php echo $row['email']; ?>">
+							<input type="text" class="form-control" name="mail" required value="<?php echo $row['email']; ?>">
 							<?php else: ?>
 							<input type="text" class="form-control" name="mail" value="<?php echo $row['email']; ?>" disabled>
 							<?php endif ?>
@@ -109,7 +110,7 @@
 				            <div class="form-group col-md-6">
 								<label>Enter New Password</label>
 								<?php if ($update == true): ?>
-								<input type="password" class="form-control" name="pwd">
+								<input type="password" class="form-control" required name="pwd">
 								<?php else: ?>
 								<input type="password" class="form-control" name="pwd" disabled>
 								<?php endif ?>
@@ -117,7 +118,7 @@
 				            <div class="form-group col-md-6">
 								<label>Confirm New Password</label>
 								<?php if ($update == true): ?>
-								<input type="password" class="form-control" name="pwd-repeat">
+								<input type="password" class="form-control" required name="pwd-repeat">
 								<?php else: ?>
 								<input type="password" class="form-control" name="pwd-repeat" disabled>
 								<?php endif ?>
@@ -127,7 +128,7 @@
 				            <div class="form-group col-md-6">
 								<label>Department</label>
 								<?php if ($update == true): ?>
-								<select id="inputDepartment" class="form-control" name="dprtmnt[]">
+								<select id="inputDepartment" class="form-control" name="dprtmnt[]" required>
 									<option disabled selected value>Choose...</option>
 									<?php
 									// Select all departments from the department table and list them in the dropdown-list      
@@ -145,7 +146,7 @@
 				            <div class="form-group col-md-6">
 								<label>Gender</label>
 								<?php if ($update == true): ?>
-				                <select id="inputGender" class="form-control" name="gndr[]">
+				                <select id="inputGender" class="form-control" name="gndr[]" required>
 				                    <option disabled selected value>Choose...</option>
                                     <option value='male'>Male</option>
                                     <option value='female'>Female</option>
@@ -158,10 +159,12 @@
 								<?php endif ?>
 				            </div>
 						</div>
+						<!-- If user clicked the edit button -->
 						<?php if ($update == true): ?>
 						<button class="btn btn-warning" type="submit" name="update-account">Update</button>
                         <a href="account.php" class="btn btn-info" name="cancel">Cancel</a>
 						<?php else: ?>
+						<!-- Otherwise -->
 						<a href="account.php?edit=<?php echo $user_id; ?>" class="btn btn-edit btn-primary" style="color: #fff;"><i class="fas fa-edit"></i> Edit</a>
 						<?php endif ?>
 		        	</form>

@@ -60,7 +60,13 @@
                                         <td><?php echo $count_ideas; ?></td>
                                         <?php $sql = mysqli_query($conn, "SELECT * FROM idea");
                                         $total_ideas = mysqli_num_rows($sql);
-                                        $percentage = ($count_ideas/$total_ideas) * 100 ?>
+                                        if ($total_ideas > 0) {
+                                            $percentage = ($count_ideas/$total_ideas) * 100;
+                                        }
+                                        else {
+                                            $percentage = 0;
+                                        }
+                                        ?>
                                         <td><?php echo (round($percentage,2)); echo ' %' ?></td>
                                         <?php $sql = mysqli_query($conn, "SELECT * FROM user WHERE department_id = $department_id");
                                         $count_users = mysqli_num_rows($sql); ?> 
@@ -87,8 +93,12 @@
                                         <?php $sql = mysqli_query($conn, "SELECT * FROM idea WHERE comment_count = 0");
                                         $count = mysqli_num_rows($sql); ?>
                                         <td><?php echo $count; ?></td>
-                                        <td></td>
-                                        <td></td>
+                                        <?php $sql = mysqli_query($conn, "SELECT * FROM idea WHERE anonymous = 1");
+                                        $count = mysqli_num_rows($sql); ?>
+                                        <td><?php echo $count; ?></td>
+                                        <?php $sql = mysqli_query($conn, "SELECT * FROM comment WHERE anonymous = 1");
+                                        $count = mysqli_num_rows($sql); ?>
+                                        <td><?php echo $count; ?></td>
                                     </tr>                                          
                                 </tbody>
                             </table>

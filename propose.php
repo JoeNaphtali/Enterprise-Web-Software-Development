@@ -59,11 +59,11 @@
             <div class="row justify-content-center">
                 <div class="form col-lg-12 mt-5 px-0 shadow">
                     <div class="card-header text-center text-light p-3" id="form-header">What's on your mind?</div>
-					<form class="bg-white p-4" action="includes/propose.inc.php" method="post">
+					<form class="bg-white p-4" action="includes/propose.inc.php" method="post" id="propose-form">
 						<div class="form-group">
 							<label>Title</label>
 							<small class="form-text text-muted">Be specific and imagine you’re proposing an idea to another person</small>
-							<input type="text" class="form-control" name="title">
+							<input type="text" class="form-control" name="title" required>
 						</div>
 						<div class="form-group">
 							<label>Body</label>
@@ -73,7 +73,7 @@
 						<div class="form-group">
 							<label>Catergories</label>
 							<small class="form-text text-muted">Add categories to describe what your question is about</small>
-							<select id="inputCategory" class="form-control" name="category[]">
+							<select id="inputCategory" class="form-control" name="category[]" required>
 								<option disabled selected value>Choose...</option>
 								<?php
 								// Select all categories from category table and list them in the dropdown-list      
@@ -88,6 +88,13 @@
 							<label class="custom-control-label" for="customCheck">Post anonymously?</label>
 						</div>
 						<button type="submit" class="btn btn-primary" name="propose-submit">Propose Idea</button>
+						<?php		
+							if (isset($_GET['error'])) {
+								if ($_GET['error'] == "emptycontent") {
+									echo '<p class="text-center" style="color: red;">Please type your idea in the textarea</p>';
+								}			
+							}
+						?>
 					</form>
                 </div>
             </div>
