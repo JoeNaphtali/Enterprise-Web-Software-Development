@@ -52,22 +52,26 @@
             <div>
                 <div class="card-footer text-muted">
                     Posted on <?php echo $row['post_date']; ?> by  
-                    <?php                   
-                    $user_id = $row['user__id'];
-                    // Retrieve user from 'user' table
-                    $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
-                    while ($row2 = mysqli_fetch_array($user_result)) {                    
-                    ?>
-					<a href="index.php?u_id=<?php echo $row2["id"]; ?>">
-                        <?php 
-                        // Concatenate user firstname and lastname into 'author' variable and display author name
-                        $author = $row2['first_name'] . ' ' . $row2['last_name'];
-                        echo $author;
+                    <?php if ($row['anonymous'] == true) { ?>                       
+                    Anonymous&nbsp;&nbsp;
+                    <?php } else { ?>
+                        <?php
+                        $user_id = $row['user__id'];
+                        // Retrieve user from 'user' table
+                        $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
+                        while ($row2 = mysqli_fetch_array($user_result)) {                    
                         ?>
-                    </a>
-                    &nbsp;
-                    <!-- Closing While loop -->
+					    <a href="index.php?u_id=<?php echo $row2["id"]; ?>">
+                            <?php 
+                            // Concatenate user firstname and lastname into 'author' variable and display author name
+                            $author = $row2['first_name'] . ' ' . $row2['last_name'];
+                            echo $author;
+                            ?>
+                        </a>
+                        &nbsp;
+                        <?php } ?>
                     <?php } ?>
+                    <!-- Closing While loop -->
 
                     <!-- Vote count -->
 

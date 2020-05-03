@@ -44,16 +44,29 @@
                     <form class="bg-white p-4" action="includes/login.inc.php" method="post">
                         <div class="form-group">
                             <label>Email address</label>
-                            <input class="form-control" type="email" name="mail" placeholder="Enter your email">
+                            <input class="form-control" type="email" name="mail" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input class="form-control" type="password" name="pwd" placeholder="Enter your password">
+                            <input class="form-control" type="password" name="pwd" placeholder="Enter your password" required>
                         </div>
                         <button class="btn btn-primary" type="submit" name="login-submit">Login</button>
                         <p>Don't have an account?
                             <a href="register.php">Register</a>
                         </p>
+                        <?php		
+							if (isset($_GET['error'])) {
+								if ($_GET['error'] == "nouser") {
+									echo '<p class="text-center" style="color: red;">Incorrect email address</p>';
+								}
+								else if ($_GET['error'] == "wrongpwd") { 
+									echo '<p class="text-center" style="color: red;">Incorrect password</p>';
+                                }
+                                if ($_GET['error'] == "emptyfields") {
+									echo '<p class="text-center" style="color: red;">Please fill in all the fields</p>';
+								}				
+							}
+						?>
                     </form>
                 </div>
             </div>

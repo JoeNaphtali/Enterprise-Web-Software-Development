@@ -111,7 +111,7 @@
                                 <div class="form-group">
                                     <label>Catergory Name</label>
                                     <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                    <input class="form-control" type="text" name="category-name" value="<?php echo $name; ?>">
+                                    <input class="form-control" type="text" name="category-name" value="<?php echo $name; ?>" required>
                                 </div>
                                 <?php if ($update == true): ?>
                                     <button class="btn btn-warning" type="submit" name="update-category">Update</button>

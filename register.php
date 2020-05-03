@@ -48,31 +48,31 @@
 		          		<div class="form-row">
 		            		<div class="form-group col-md-6">
 								<label>First Name</label>
-								<input type="text" class="form-control" name="fname">
+								<input type="text" class="form-control" name="fname" required>
 							</div>
 							<div class="form-group col-md-6">
 								<label>Last Name</label>
-								<input type="text" class="form-control" name="lname">
+								<input type="text" class="form-control" name="lname" required>
 							</div>
 		          		</div>
 		            	<div class="form-group">
 							<label>Email Address</label>
-							<input type="text" class="form-control" name="mail">
+							<input type="email" class="form-control" name="mail" required>
 						</div>
 		          		<div class="form-row">
 				            <div class="form-group col-md-6">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="pwd">
+                                <input type="password" class="form-control" name="pwd" required>
 				            </div>
 				            <div class="form-group col-md-6">
                                 <label>Confirm Password</label>
-                                <input type="password" class="form-control" name="pwd-repeat">
+                                <input type="password" class="form-control" name="pwd-repeat" required>
 				            </div>
                         </div>
                         <div class="form-row">
 				            <div class="form-group col-md-6">
 				                <label>Department</label>
-								<select id="inputDepartment" class="form-control" name="dprtmnt[]">
+								<select id="inputDepartment" class="form-control" name="dprtmnt[]" required>
 									<option disabled selected value>Choose...</option>
 									<?php
 									// Select all departments from the department table and list them in the dropdown-list      
@@ -84,7 +84,7 @@
 				            </div>
 				            <div class="form-group col-md-6">
 				                <label>Gender</label>
-				                <select id="inputGender" class="form-control" name="gndr[]">
+				                <select id="inputGender" class="form-control" name="gndr[]" required>
 				                    <option disabled selected value>Choose...</option>
                                     <option value='male'>Male</option>
                                     <option value='female'>Female</option>
@@ -93,6 +93,44 @@
 				            </div>
 		          		</div>
 						<button type="submit" class="btn btn-primary" name="register-submit">Register</button>
+						<p>Already have an account?
+                            <a href="login.php">Login</a>
+                        </p>
+						<?php
+						
+							if (isset($_GET['error'])) {
+								if ($_GET['error'] == "emptydprtmnt") {
+									echo '<h5 class="text-center" style="color: red;">Please select a department</h5>';
+								}
+								else if ($_GET['error'] == "emptygndr") {
+									echo '<h5 class="text-center" style="color: red;">Please select a gender</h5>';
+								}
+								else if ($_GET['error'] == "emptyfields") {
+									echo '<h5 class="text-center" style="color: red;">Please fill in all the fields</h5>';
+								}
+								else if ($_GET['error'] == "invalidmail") {
+									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
+								}
+								else if ($_GET['error'] == "invalidfname") {
+									echo '<h5 class="text-center" style="color: red;">Please enter a valid first name, letters only</h5>';
+								}
+								else if ($_GET['error'] == "invalidlname") {
+									echo '<h5 class="text-center" style="color: red;">Please enter a valid last name, letters only</h5>';
+								}
+								else if ($_GET['error'] == "invalidmail") {
+									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
+								}
+								else if ($_GET['error'] == "invalidmail") {
+									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
+								}
+								else if ($_GET['error'] == "invalidmail") { 
+									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
+								}
+								else if ($_GET['error'] == "emailtaken") {
+									echo '<h5 class="text-center" style="color: red;">The email address entered is already taken</h5>';
+								}
+							}
+						?>
 		        	</form>
                 </div>
             </div>

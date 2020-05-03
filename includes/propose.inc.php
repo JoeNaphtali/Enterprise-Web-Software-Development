@@ -9,6 +9,8 @@ if (isset($_POST['propose-submit'])) {
     // Database connection
     require 'dbh.inc.php';
 
+    $anonymous = false;
+
     // Store the title the user entered in the 'title' variable
     $title = $_POST['title'];
     // Store the text the user entered in the 'content' variable
@@ -25,7 +27,11 @@ if (isset($_POST['propose-submit'])) {
         header("Location: ../propose.php?error=emptycategory&title=".$title."&content=".$content);
         exit();
     }
-    
+
+    if (isset($_POST['anonymous'])) {
+        $anonymous = true;
+    }
+
     // Store user id into the variable 'user_id' using a session variable
     $user_id = $_SESSION['user_id'];
     // Store department id into the variable 'department_id' using a session variable
@@ -33,14 +39,14 @@ if (isset($_POST['propose-submit'])) {
     $date = date('Y-m-d');
 
     // Validate for empty fields
-    if (empty($title) || empty($content)) {
-        header("Location: ../propose.php?error=emptyfields");
+    if (empty($content)) {
+        header("Location: ../propose.php?error=emptycontent");
         exit();
     }
     else {
 
         // Insert idea into 'idea' table
-        $sql = "INSERT INTO idea (idea_title, content, category_id, user__id, department_id, post_date) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO idea (idea_title, content, category_id, user__id, department_id, post_date, anonymous) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         // Display error if there is an sql syntax error in the 'INSERT INTO' statement
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -49,7 +55,7 @@ if (isset($_POST['propose-submit'])) {
         }
         else {
         // Bind varibales the variables 'stmt' and 'name' to a prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "ssssss", $title, $content, $category_id, $user_id, $department, $date);
+        mysqli_stmt_bind_param($stmt, "sssssss", $title, $content, $category_id, $user_id, $department, $date, $anonymous);
         // Execute prepared statement
         mysqli_stmt_execute($stmt);
         // Return user to the home page with a success message
