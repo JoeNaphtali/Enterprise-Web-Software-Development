@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Post | Ideas</title>
+		<title>Idea | Ideas</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">

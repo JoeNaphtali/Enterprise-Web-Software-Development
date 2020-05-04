@@ -10,7 +10,7 @@
                     }
                     
                     // Select idea from the 'idea' table
-					$results = mysqli_query($conn, "SELECT * FROM idea WHERE id=$idea_id");
+                    $results = mysqli_query($conn, "SELECT * FROM idea WHERE id=$idea_id");
 
 					while ($row = mysqli_fetch_array($results)) { 
 						
@@ -18,6 +18,7 @@
 
                     <!-- Title -->
                     
+                    <?php $idea_title = $row['idea_title']; ?>
                     <h1 class="mt-4"><?php echo $row['idea_title']; ?></h1>
 
                     <!-- /.Title -->
@@ -27,13 +28,13 @@
 					<p class="lead">
                     Proposed by
                     <?php
+                    $user_id = $row['user__id'];
                     // If user proposed idea anonymously display author as 'Anonymous'
                     if ($row['anonymous'] == true) { 
                     ?>                       
                         Anonymous
                         <?php } else { ?>
                         <?php                   
-                        $user_id = $row['user__id'];
                         // Retrieve user from 'user' table
                         $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
                         while ($row2 = mysqli_fetch_array($user_result)) {                    
@@ -71,8 +72,12 @@
                     <!-- /.Category -->
 
                     <!-- Date -->
+
+                    <?php $time = new DateTime($row['post_date']);
+                    $date = $time->format('F jS');
+                    $time = $time->format('H:i'); ?>
                     
-                    <p>On <?php echo $row['post_date']; ?> </p>
+                    <p>Posted On <?php echo $date; ?> at <?php echo $time; ?> </p>
                     
                     <!-- /.Date -->
 

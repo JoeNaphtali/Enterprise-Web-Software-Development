@@ -91,3 +91,16 @@ $(document).ready(function(){
   });
 
 });
+
+$(document).ready(function(){
+$('#terms_and_conditions').click(function(){
+    // If the user checks the terms and conditions checkbox
+    if($(this).is(':checked')){
+        // Enable the 'Propose Idea' button.
+        $('#propose-submit').attr("disabled", false);
+    } else{
+        // If the user did not check the terms and conditions checkbox
+        $('#propose-submit').attr("disabled", true);
+    }
+});
+});
