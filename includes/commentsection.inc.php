@@ -4,8 +4,10 @@
 							<div class="card-body">
 								<form action="includes/addcomment.inc.php" method="post">
 									<div class="form-group">
+                                    <input type="hidden" name="author_id" value="<?php echo $user_id; ?>">
                                     <input type="hidden" name="id" value="<?php echo $idea_id; ?>">
-										<textarea class="form-control" name="comment_content" rows="3"></textarea>
+                                    <input type="hidden" name="idea_title" value="<?php echo $idea_title; ?>">
+										<textarea class="form-control" name="comment_content" rows="3" required></textarea>
                                     </div>
                                     <div class="custom-control custom-checkbox form-group">
                                         <input type="checkbox" class="custom-control-input" id="customCheck" name="anonymous">

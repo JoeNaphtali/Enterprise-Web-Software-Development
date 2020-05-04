@@ -51,15 +51,17 @@
                 <!-- Truncate content to 180 characters -->
                 <p class="card-text"><?php echo substr(strip_tags($row['content']), 0, 180), "..."; ?></p>
 
-                <a href="post.php?i_id=<?php echo $row["id"]; ?>">Read More &rarr;</a>
+                <a href="idea.php?i_id=<?php echo $row["id"]; ?>">Read More &rarr;</a>
 
             </div>
 
             <div>
 
                 <div class="card-footer text-muted">
-
-                    Posted on <?php echo $row['post_date']; ?> by  
+                    <?php $time = new DateTime($row['post_date']);
+                    $date = $time->format('F jS');
+                    $time = $time->format('H:i'); ?>
+                    Posted on <?php echo $date ?> at <?php echo $time ?> by  
                     <?php if ($row['anonymous'] == true) { ?>                       
                     Anonymous&nbsp;&nbsp;
                     <?php } else { ?>

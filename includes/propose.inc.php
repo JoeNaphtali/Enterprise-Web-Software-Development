@@ -3,6 +3,9 @@
 // Start session in order to use the session variable 'user_id'
 session_start();
 
+// Send email function
+include "sendemail.inc.php";
+
 // If user clicks the 'Propose' button
 if (isset($_POST['propose-submit'])) {
 
@@ -36,7 +39,7 @@ if (isset($_POST['propose-submit'])) {
     $user_id = $_SESSION['user_id'];
     // Store department id into the variable 'department_id' using a session variable
     $department = $_SESSION['department'];
-    $date = date('Y-m-d');
+    $date = date('Y-m-d H:i');
 
     // Validate for empty fields
     if (empty($content)) {
@@ -58,6 +61,21 @@ if (isset($_POST['propose-submit'])) {
         mysqli_stmt_bind_param($stmt, "sssssss", $title, $content, $category_id, $user_id, $department, $date, $anonymous);
         // Execute prepared statement
         mysqli_stmt_execute($stmt);
+
+        // Retrieve department QA Coordinator from the 'user' table
+        $qacoordinators = mysqli_query($conn, "SELECT * FROM user WHERE department_id=$department AND user_role='qacoordinator'");
+
+        while ($qacoordinator = mysqli_fetch_array($qacoordinators)) {
+            // Retrieve QA Coordinator's email address
+            $qacoordinator_email = $qacoordinator['email'];
+        }
+
+        // Send email notification to author of idea
+        $to       =   $qacoordinator_email;
+        $subject  =   "A new idea has been added to your department";
+        $message  =   $_SESSION['first_name'].' '.$_SESSION['last_name'].' '."submitted a new idea '".$title."'.";
+        $mailsend =   sendmail($to,$subject,$message);
+
         // Return user to the home page with a success message
         header("Location: ../index.php?proposal=success");
         exit();

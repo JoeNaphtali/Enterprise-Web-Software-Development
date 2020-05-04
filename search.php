@@ -71,7 +71,7 @@
                         if (isset($_POST['submit'])){
                     
                             $search = $_POST['search'];
-                            $query = "SELECT * FROM idea WHERE content LIKE '%$search%'";
+                            $query = "SELECT * FROM idea WHERE content or idea_title LIKE '%$search%'";
                             $search_query = mysqli_query($conn, $query);
                     
                         if(!$search_query){
@@ -81,7 +81,7 @@
                         $count = mysqli_num_rows($search_query);
                     
                         if($count == 0){
-                            echo "<h1>NO RESULT!</h1>";
+                            echo "<p>There are no ideas for this search item.</p>";
                             
                         }else {
 
