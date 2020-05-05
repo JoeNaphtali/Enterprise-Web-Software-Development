@@ -45,7 +45,7 @@
 
 		<!-- Idea -->
 
-		<div class="container">
+		<div class="container" style="overflow-wrap: break-word;">
 
 		    <div class="row">
 

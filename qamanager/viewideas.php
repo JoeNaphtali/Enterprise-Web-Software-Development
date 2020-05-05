@@ -57,7 +57,6 @@
                                                 <th>Upvotes</th>
                                                 <th>Downvotes</th>
                                                 <th>Anonymous</th>
-                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -97,7 +96,6 @@
                                                     $anonymous = "No";
                                                 } ?>
                                                 <td><?php echo $anonymous; ?></td>
-                                                <td><a href="includes/manageideas.inc.php?delete=<?php echo $row["id"]; ?>" class="btn btn-danger" style="color: #fff;"><i class="fas fa-trash-alt"></i></a></td>
                                             </tr>
                                         <?php } ?>                                            
                                         </tbody>

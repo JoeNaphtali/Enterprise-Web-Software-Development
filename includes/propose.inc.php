@@ -18,6 +18,14 @@ if (isset($_POST['propose-submit'])) {
     $title = $_POST['title'];
     // Store the text the user entered in the 'content' variable
     $content = $_POST['content'];
+
+    $pname = $_FILES["file"]["name"];
+
+    $tname = $_FILES["file"]["tmp_name"];
+
+    $uploads_dir = 'files';
+
+    move_uploaded_file($tname, $uploads_dir.'/'.$pname);
     
     // Check if a category was selected
     if(isset($_POST["category"]))  
@@ -49,7 +57,7 @@ if (isset($_POST['propose-submit'])) {
     else {
 
         // Insert idea into 'idea' table
-        $sql = "INSERT INTO idea (idea_title, content, category_id, user__id, department_id, post_date, anonymous) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO idea (idea_title, content, attachment, category_id, user__id, department_id, post_date, anonymous) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         // Display error if there is an sql syntax error in the 'INSERT INTO' statement
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -58,7 +66,7 @@ if (isset($_POST['propose-submit'])) {
         }
         else {
         // Bind varibales the variables 'stmt' and 'name' to a prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "sssssss", $title, $content, $category_id, $user_id, $department, $date, $anonymous);
+        mysqli_stmt_bind_param($stmt, "ssssssss", $title, $content, $pname, $category_id, $user_id, $department, $date, $anonymous);
         // Execute prepared statement
         mysqli_stmt_execute($stmt);
 

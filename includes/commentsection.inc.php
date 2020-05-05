@@ -60,7 +60,9 @@
                                 }
                                 ?>
                             </h5>
-							<?php echo $comment_content; ?>
+
+                            <?php echo "<p>$comment_content</p>"; ?>
+
 						</div>
                     </div>
                     <!-- /.Comment -->
