@@ -33,44 +33,35 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Ideas</h1>
+                        <h1 class="mt-4">Comments</h1>
                         <div class="card mb-4">                        
                             <div class="card-body">
                                 <div class="table-responsive">
                                 <?php
-                                //Retrieve all ideas from 'idea' table
-                                $results = mysqli_query($conn, "SELECT * FROM idea");
+                                //Retrieve all comments from 'comment' table
+                                $results = mysqli_query($conn, "SELECT * FROM comment");
                                 ?>
-                                    <!-- Ideas Table -->
+                                    <!-- Comments Table -->
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Content</th>
-                                                <th>Category</th>
+                                                <th>Idea Title</th>
                                                 <th>Author</th>
-                                                <th>Department</th>
-                                                <th>Date Posted</th>
-                                                <th>Comments</th>
-                                                <th>Views</th>
-                                                <th>Upvotes</th>
-                                                <th>Downvotes</th>
+                                                <th>Content</th>
+                                                <th>Comment Date</th>
                                                 <th>Anonymous</th>
-                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php while ($row = mysqli_fetch_array($results)) { ?>
                                             <tr>
                                                 <td><?php echo $row['id']; ?></td>
-                                                <td><?php echo $row['idea_title']; ?></td>
-                                                <td><?php echo $row['content']; ?></td>
-                                                <?php // Retrieve category name from 'category' table
-                                                $category_id = $row['category_id'];
-                                                $categories = mysqli_query($conn, "SELECT * FROM category WHERE id=$category_id");
-                                                while ($category = mysqli_fetch_array($categories)) { ?>
-                                                <td><?php echo $category['category_name']; ?></td>
+                                                <?php // Retrieve idea name title 'idea' table
+                                                $idea_id = $row['idea_id'];
+                                                $ideas = mysqli_query($conn, "SELECT * FROM idea WHERE id=$idea_id");
+                                                while ($idea = mysqli_fetch_array($ideas)) { ?>
+                                                <td><?php echo $idea['idea_title']; ?></td>
                                                 <?php } ?>
                                                 <?php // Retrieve author from 'user' table
                                                 $user_id = $row['user__id'];
@@ -79,17 +70,8 @@
                                                     $author = $user['first_name'].' '.$user['last_name'];  ?>
                                                 <td><?php echo $author ?></td>
                                                 <?php } ?>
-                                                <?php // Retrieve department name from 'department' table
-                                                $department_id = $row['department_id'];
-                                                $departments = mysqli_query($conn, "SELECT * FROM department WHERE id=$department_id");
-                                                while ($department = mysqli_fetch_array($departments)) { ?>
-                                                <td><?php echo $department['department_name']; ?></td>
-                                                <?php } ?>
-                                                <td><?php echo $row['post_date']; ?></td>
-                                                <td><?php echo $row['comment_count']; ?></td>
-                                                <td><?php echo $row['view_count']; ?></td>
-                                                <td><?php echo $row['upvote_count']; ?></td>
-                                                <td><?php echo $row['downvote_count']; ?></td>
+                                                <td><?php echo $row['content']; ?></td>
+                                                <td><?php echo $row['comment_date']; ?></td>
                                                 <?php if ($row['anonymous'] == true) {
                                                     $anonymous = "Yes";
                                                 }
@@ -97,7 +79,6 @@
                                                     $anonymous = "No";
                                                 } ?>
                                                 <td><?php echo $anonymous; ?></td>
-                                                <td><a href="includes/manageideas.inc.php?delete=<?php echo $row["id"]; ?>" class="btn btn-danger" style="color: #fff;"><i class="fas fa-trash-alt"></i></a></td>
                                             </tr>
                                         <?php } ?>                                            
                                         </tbody>
@@ -108,7 +89,7 @@
                         </div>
                         <div class="mb-4">
                             <button type="button" class="btn btn-success" id="btnExportToCsv">Export to csv file</button>
-                        </div>                      
+                        </div>                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -134,7 +115,7 @@
                 const anchorElement = document.createElement("a");
 
                 anchorElement.href = blobUrl;
-                anchorElement.download = "ideas.csv";
+                anchorElement.download = "comments.csv";
                 anchorElement.click();
 
                 setTimeout(() => {

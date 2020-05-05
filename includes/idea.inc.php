@@ -84,10 +84,24 @@
 		            <hr>
 
                     <!-- Idea Content -->
-                    
+
                     <?php echo $row['content']; ?>
 
                     <!-- /.Idea Content -->
+
+                    <!-- Idea Attachment -->
+
+                    <?php 
+                    
+                    if (!empty($row['attachment'])) {
+
+                        echo "<a href='includes/files/".$row['attachment']."' target='_blank'>Attachment: ".$row['attachment']."</a>";
+
+                    }
+
+                    ?>
+
+                    <!-- /.Idea Attachment -->
 
 					<!-- Closing While loop -->
                     <?php } ?>

@@ -54,17 +54,6 @@
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Idea Title</th>
-                                                <th>Author</th>
-                                                <th>Content</th>
-                                                <th>Comment Date</th>
-                                                <th>Anonymous</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                         <?php while ($row = mysqli_fetch_array($results)) { ?>
                                             <tr>
@@ -99,7 +88,10 @@
                                     <!-- /.Ideas Table -->
                                 </div>
                             </div>
-                        </div>                      
+                        </div>
+                        <div class="mb-4">
+                            <button type="button" class="btn btn-success" id="btnExportToCsv">Export to csv file</button>
+                        </div>                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -112,6 +104,27 @@
             </div>
             <!-- /.Content -->
         </div>
+        <script src="js/TableCSVExporter.js"></script>
+        <script>
+            const dataTable = document.getElementById("dataTable");
+            const btnExportToCsv = document.getElementById("btnExportToCsv");
+
+            btnExportToCsv.addEventListener("click", () => {
+                const exporter = new TableCSVExporter(dataTable);
+                const csvOutput = exporter.convertToCSV();
+                const csvBlob = new Blob([csvOutput], { type: "text/csv" });
+                const blobUrl = URL.createObjectURL(csvBlob);
+                const anchorElement = document.createElement("a");
+
+                anchorElement.href = blobUrl;
+                anchorElement.download = "comments.csv";
+                anchorElement.click();
+
+                setTimeout(() => {
+                    URL.revokeObjectURL(blobUrl);
+                }, 500);
+            });
+        </script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

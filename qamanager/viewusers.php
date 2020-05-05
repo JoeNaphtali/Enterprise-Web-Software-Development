@@ -33,82 +33,77 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Ideas</h1>
+                    <h1 class="mt-4">Users</h1>
                         <div class="card mb-4">                        
                             <div class="card-body">
                                 <div class="table-responsive">
                                 <?php
-                                //Retrieve all ideas from 'idea' table
-                                $results = mysqli_query($conn, "SELECT * FROM idea");
+                                //Retrieve all users from 'user' table
+                                $results = mysqli_query($conn, "SELECT * FROM user");
                                 ?>
-                                    <!-- Ideas Table -->
+                                    <!-- Users Table -->
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Content</th>
-                                                <th>Category</th>
-                                                <th>Author</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Email</th>
                                                 <th>Department</th>
-                                                <th>Date Posted</th>
-                                                <th>Comments</th>
-                                                <th>Views</th>
-                                                <th>Upvotes</th>
-                                                <th>Downvotes</th>
-                                                <th>Anonymous</th>
-                                                <th>Actions</th>
+                                                <th>Gender</th>
+                                                <th>User Role</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php while ($row = mysqli_fetch_array($results)) { ?>
                                             <tr>
-                                                <td><?php echo $row['id']; ?></td>
-                                                <td><?php echo $row['idea_title']; ?></td>
-                                                <td><?php echo $row['content']; ?></td>
-                                                <?php // Retrieve category name from 'category' table
-                                                $category_id = $row['category_id'];
-                                                $categories = mysqli_query($conn, "SELECT * FROM category WHERE id=$category_id");
-                                                while ($category = mysqli_fetch_array($categories)) { ?>
-                                                <td><?php echo $category['category_name']; ?></td>
-                                                <?php } ?>
-                                                <?php // Retrieve author from 'user' table
-                                                $user_id = $row['user__id'];
-                                                $users = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
-                                                while ($user = mysqli_fetch_array($users)) {
-                                                    $author = $user['first_name'].' '.$user['last_name'];  ?>
-                                                <td><?php echo $author ?></td>
-                                                <?php } ?>
+                                            <td><?php echo $row['id']; ?></td>
+                                                <td><?php echo $row['first_name']; ?></td>
+                                                <td><?php echo $row['last_name']; ?></td>
+                                                <td><?php echo $row['email']; ?></td>
                                                 <?php // Retrieve department name from 'department' table
                                                 $department_id = $row['department_id'];
-                                                $departments = mysqli_query($conn, "SELECT * FROM department WHERE id=$department_id");
-                                                while ($department = mysqli_fetch_array($departments)) { ?>
-                                                <td><?php echo $department['department_name']; ?></td>
+                                                $department_result = mysqli_query($conn, "SELECT * FROM department WHERE id=$department_id");
+                                                while ($row1 = mysqli_fetch_array($department_result)) { ?>
+                                                <td><?php echo $row1['department_name']; ?></td>
                                                 <?php } ?>
-                                                <td><?php echo $row['post_date']; ?></td>
-                                                <td><?php echo $row['comment_count']; ?></td>
-                                                <td><?php echo $row['view_count']; ?></td>
-                                                <td><?php echo $row['upvote_count']; ?></td>
-                                                <td><?php echo $row['downvote_count']; ?></td>
-                                                <?php if ($row['anonymous'] == true) {
-                                                    $anonymous = "Yes";
-                                                }
-                                                else {
-                                                    $anonymous = "No";
-                                                } ?>
-                                                <td><?php echo $anonymous; ?></td>
-                                                <td><a href="includes/manageideas.inc.php?delete=<?php echo $row["id"]; ?>" class="btn btn-danger" style="color: #fff;"><i class="fas fa-trash-alt"></i></a></td>
+                                                <td><?php echo $row['gender']; ?></td>
+                                                <td><?php echo $row['user_role']; ?></td>
                                             </tr>
                                         <?php } ?>                                            
                                         </tbody>
                                     </table>
-                                    <!-- /.Ideas Table -->
+                                    <!-- /.Users Table -->
                                 </div>
                             </div>
                         </div>
+
                         <div class="mb-4">
                             <button type="button" class="btn btn-success" id="btnExportToCsv">Export to csv file</button>
-                        </div>                      
+                        </div>
+
+                        <!-- Display user information when 'edit' button is clicked -->
+
+                        <?php 
+
+                        $firstname = "";
+                        $lastname = "";
+                        $email = "";   
+                        $update = false; 
+
+                        if (isset($_GET['edit'])) {
+                            $id = $_GET['edit'];
+                            $update = true;
+                            $record = mysqli_query($conn, "SELECT * FROM user WHERE id='$id'");
+
+                            if ($record) {
+                                $row = mysqli_fetch_array($record);
+                                $firstname = $row['first_name'];
+                                $lastname = $row['last_name'];
+                                $email = $row['email'];
+                            }
+                        }
+                        ?>                 
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -134,7 +129,7 @@
                 const anchorElement = document.createElement("a");
 
                 anchorElement.href = blobUrl;
-                anchorElement.download = "ideas.csv";
+                anchorElement.download = "users.csv";
                 anchorElement.click();
 
                 setTimeout(() => {

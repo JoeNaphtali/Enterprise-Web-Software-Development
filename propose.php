@@ -59,7 +59,7 @@
             <div class="row justify-content-center">
                 <div class="form col-lg-12 mt-5 px-0 shadow">
                     <div class="card-header text-center text-light p-3" id="form-header">What's on your mind?</div>
-					<form class="bg-white p-4" action="includes/propose.inc.php" method="post" id="propose-form">
+					<form class="bg-white p-4" action="includes/propose.inc.php" method="post" id="propose-form" enctype="multipart/form-data">
 						<div class="form-group">
 							<label>Title</label>
 							<small class="form-text text-muted">Be specific and imagine you’re proposing an idea to another person</small>
@@ -82,6 +82,10 @@
 								<option value="<?php echo $row['id']; ?>"><?php echo $row['category_name']; ?></option>
 								<?php } ?>
 							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlFile1">Attachment (Optional)</label>
+							<input type="file" class="form-control-file" id="attachment" name="file">
 						</div>
 						<div class="custom-control custom-checkbox form-group">
 							<input type="checkbox" class="form-check-input" id="anonymous" name="anonymous">
