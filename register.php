@@ -1,12 +1,14 @@
 <?php
+	// Start Session
+	session_start();
+
 	// Database Connection
 	include "includes/dbh.inc.php";
-	// Start Session
-	/*session_start();
+
 	//If user is already logged in, redirect to home page
-    if(isset($_SESSION['user_id'])){
+    if(isset($_SESSION['login'])){
         header("Location: index.php");
-    }*/
+    }
 ?>
 
 <!DOCTYPE html>

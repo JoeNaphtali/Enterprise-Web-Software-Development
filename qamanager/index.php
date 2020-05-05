@@ -1,8 +1,18 @@
 <?php
     // Start Session
     session_start();
+
     // Database Connection
-    include "../includes/dbh.inc.php";
+    include "includes/dbh.inc.php";
+
+    // If user is not logged in, redirect to login page
+    if(!$_SESSION['login']){
+        header("Location: ../login.php");
+    }
+    // If user is not a QA Manager, redirect to home page
+    else if($_SESSION['user_role'] !== 'qamanager'){
+        header("Location: ../index.php");
+    }
 ?>
 
 <!DOCTYPE html>

@@ -10,17 +10,9 @@
                                 </div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="viewusers.php"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                View Users</a
-                            >
-                            <a class="nav-link" href="viewideas.php"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                View Ideas</a
-                            >
-                            <a class="nav-link" href="viewcomments.php"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
-                                View Comments</a
+                            <a class="nav-link" href="managecategories.php"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
+                                Manage Categories</a
                             >
                             <a class="nav-link" href="../index.php"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
