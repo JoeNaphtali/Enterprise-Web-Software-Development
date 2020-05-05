@@ -1,13 +1,14 @@
 <?php
-	session_start();
-	include "includes/voting.inc.php";
-	/*//If user is not logged in, redirect to login page
-    if(!isset($_SESSION['user_id'])){
+    // Start Session
+    session_start();
+    
+    // Database Connection
+    include "includes/voting.inc.php";
+
+    //If user is not logged in, redirect to login page
+    if(!$_SESSION['login']){
         header("Location: login.php");
     }
-    else {
-        $_SESSION['user_id'] = 1;
-	}*/
 ?>
 
 <!DOCTYPE html>

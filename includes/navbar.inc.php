@@ -6,13 +6,18 @@
                 <i class="fas fa-user"></i> Profile </a>
             <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="account.php">My account</a>
-                <a class="dropdown-item" href="managecategories.php">Manage Categories</a>
+                <div class="dropdown-divider"></div>
                 <?php
-                    /*//Display 'Manage Categories' option if user is either a QA Manager or an Administrator
-                    if ($_SESSION['user_role'] == "qamanager" || $_SESSION['user_role'] == "admin") {
-                        echo '<a class="dropdown-item" href="managecategories.php">Manage Categories</a>';
-                    }*/
-
+                if ($_SESSION['user_role'] == 'admin') {
+                    echo '<a class="dropdown-item" href="administrator/index.php">Dashboard</a>
+                    <div class="dropdown-divider"></div>';
+                }
+                ?>
+                <?php
+                if ($_SESSION['user_role'] == 'qamanager') {
+                    echo '<a class="dropdown-item" href="qamanager/index.php">Dashboard</a>
+                    <div class="dropdown-divider"></div>';
+                }
                 ?>
                 <form action="includes/logout.inc.php" method="post">
                     <button class="dropdown-item" name="logout-submit">Log out</button>

@@ -11,6 +11,8 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="account.php">My Account</a>
                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../index.php">Ideas Home Page</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../includes/logout.inc.php">Logout</a>
                     </div>
                 </li>
