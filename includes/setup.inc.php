@@ -97,7 +97,7 @@ $sql1 = "CREATE TABLE idea(
     category_id INT(3) NOT NULL,
     user__id INT(3) NOT NULL,
     department_id INT(3) NOT NULL,
-    post_date DATE NOT NULL,
+    post_date DATETIME NOT NULL,
     comment_count int(11) NOT NULL,
     view_count int(11) NOT NULL,
     upvote_count int(11) NOT NULL,
@@ -146,7 +146,7 @@ $sql1 = "CREATE TABLE comment(
     idea_id INT(3) NOT NULL,
     user__id INT(3) NOT NULL,
     content TEXT NOT NULL,
-    comment_date DATE NOT NULL,
+    comment_date DATETIME NOT NULL,
     anonymous boolean NOT NULL,
     FOREIGN KEY (idea_id) REFERENCES idea(id),
     FOREIGN KEY (user__id) REFERENCES user(id)
