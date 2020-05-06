@@ -7,7 +7,7 @@
                         // Increase page view count by 1 when user accesses specific idea page
                         mysqli_query($conn, "UPDATE idea SET view_count = view_count + 1 WHERE id=$idea_id");
 
-                    } else
+                    }
                     
                     // Select idea from the 'idea' table
                     $results = mysqli_query($conn, "SELECT * FROM idea WHERE id=$idea_id");
