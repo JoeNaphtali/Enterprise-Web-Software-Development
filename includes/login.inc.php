@@ -36,7 +36,7 @@ if (isset($_POST['login-submit'])) {
 
                 // Display error and return user to login page if password is incorrect
                 if ($pwdCheck == false) {
-                    header("Location: ../login.php?error=wrongpwd");
+                    header("Location: ../login.php?error=wrongpwd&mail=".$email);
                     exit();
                 }
 

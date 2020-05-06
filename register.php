@@ -50,16 +50,28 @@
 		          		<div class="form-row">
 		            		<div class="form-group col-md-6">
 								<label>First Name</label>
+								<?php if (isset($_GET['fname'])):?>
+								<input type="text" class="form-control" name="fname" value="<?php echo ($_GET['fname']); ?>" required>
+								<?php else :?>
 								<input type="text" class="form-control" name="fname" required>
+								<?php endif ?>
 							</div>
 							<div class="form-group col-md-6">
 								<label>Last Name</label>
+								<?php if (isset($_GET['lname'])):?>
+								<input type="text" class="form-control" name="lname" value="<?php echo ($_GET['lname']); ?>" required>
+								<?php else :?>
 								<input type="text" class="form-control" name="lname" required>
+								<?php endif ?>
 							</div>
 		          		</div>
 		            	<div class="form-group">
 							<label>Email Address</label>
+							<?php if (isset($_GET['mail'])):?>
+							<input type="email" class="form-control" name="mail" value="<?php echo ($_GET['mail']); ?>" required>
+							<?php else :?>
 							<input type="email" class="form-control" name="mail" required>
+							<?php endif ?>
 						</div>
 		          		<div class="form-row">
 				            <div class="form-group col-md-6">
@@ -102,34 +114,52 @@
 						
 							if (isset($_GET['error'])) {
 								if ($_GET['error'] == "emptydprtmnt") {
-									echo '<h5 class="text-center" style="color: red;">Please select a department</h5>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please select a department
+									</p></div>';
 								}
 								else if ($_GET['error'] == "emptygndr") {
-									echo '<h5 class="text-center" style="color: red;">Please select a gender</h5>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please select a gender
+									</p></div>';
 								}
 								else if ($_GET['error'] == "emptyfields") {
-									echo '<h5 class="text-center" style="color: red;">Please fill in all the fields</h5>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please fill in all the fields
+									</p></div>';
 								}
 								else if ($_GET['error'] == "invalidmail") {
-									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please enter a valid email address
+									</p></div>';
 								}
 								else if ($_GET['error'] == "invalidfname") {
-									echo '<h5 class="text-center" style="color: red;">Please enter a valid first name, letters only</h5>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please enter a valid first name, letters only
+									</p></div>';
 								}
 								else if ($_GET['error'] == "invalidlname") {
-									echo '<h5 class="text-center" style="color: red;">Please enter a valid last name, letters only</h5>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please enter a valid last name, letters only
+									</p></div>';
 								}
-								else if ($_GET['error'] == "invalidmail") {
-									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
-								}
-								else if ($_GET['error'] == "invalidmail") {
-									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
-								}
-								else if ($_GET['error'] == "invalidmail") { 
-									echo '<h5 class="text-center" style="color: red;">Please enter a valid email</h5>';
+								else if ($_GET['error'] == "passwordcheck") {
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Passwords do not match
+									</p></div>';
 								}
 								else if ($_GET['error'] == "emailtaken") {
-									echo '<h5 class="text-center" style="color: red;">The email address entered is already taken</h5>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									This email address is already taken
+									</p></div>';
 								}
 							}
 						?>

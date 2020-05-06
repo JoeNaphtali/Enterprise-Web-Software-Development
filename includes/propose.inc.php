@@ -23,7 +23,7 @@ if (isset($_POST['propose-submit'])) {
 
     $tname = $_FILES["file"]["tmp_name"];
 
-    $uploads_dir = 'files';
+    $uploads_dir = '../attachments';
 
     move_uploaded_file($tname, $uploads_dir.'/'.$pname);
     
@@ -51,7 +51,7 @@ if (isset($_POST['propose-submit'])) {
 
     // Validate for empty fields
     if (empty($content)) {
-        header("Location: ../propose.php?error=emptycontent");
+        header("Location: ../propose.php?error=emptycontent&title=".$title);
         exit();
     }
     else {

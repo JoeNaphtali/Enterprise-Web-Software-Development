@@ -78,6 +78,26 @@
                                 <div class="form col-lg-12 bg-light mt-5 px-0 shadow">
                                     <div class="card-header text-center text-light p-3 bg-dark" id="form-header">Manage Categories</div>
                                     <div class="p-4">
+                                    <?php
+                                        if (isset($_GET['savedsuccesfully'])) { 
+                                            echo '<div class="text-center">
+                                            <p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
+                                            Category saved successfully.
+                                            </p></div>';
+                                        }
+                                        else if (isset($_GET['categoryupdated'])) {
+                                            echo '<div class="text-center">
+                                            <p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
+                                            Category updated successfully.
+                                            </p></div>';
+                                        }
+                                        else if (isset($_GET['categorydeleted'])) {
+                                            echo '<div class="text-center">
+                                            <p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+                                            Category deleted.
+                                            </p></div>';
+                                        }
+                                    ?>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead class="thead-light">

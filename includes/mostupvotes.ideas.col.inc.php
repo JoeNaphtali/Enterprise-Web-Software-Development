@@ -1,10 +1,10 @@
 <div class="col-md-8">
         <div class="row">
             <div class="col-sm-6">
-                <h1 class="my-4 latest-ideas">Most Upvotes</h1>
+                <h1 class="my-4 latest-ideas" style="font-weight: bold;">Most Upvotes</h1>
             </div>
             <div class="col-sm-6">
-                <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
+                <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="shadow btn btn-primary my-4">Propose an Idea</button></a>
             </div>
         </div>
 
@@ -25,9 +25,9 @@
             
         ?>
 
-        <div class="card mb-4">
+        <div class="card mb-4 shadow">
             <div class="card-body">
-                <h2 class="card-title"><?php echo $row['idea_title']; ?></h2>
+                <h2 class="card-title" style="font-weight: bold;"><?php echo $row['idea_title']; ?></h2>
                 
                 <!-- Category -->
 
@@ -75,6 +75,9 @@
                     <?php } ?>
                     <!-- Closing While loop -->
 
+                    <i class="fas fa-eye"></i>&nbsp;<?php echo $row['view_count'] ?>&nbsp;
+                    <i class="fas fa-comment"></i>&nbsp;<?php echo $row['comment_count'] ?>&nbsp;
+
                     <!-- Vote count -->
 
                     <i <?php if (userLiked($row['id'])): ?>
@@ -90,8 +93,6 @@
                         mysqli_query($conn, "UPDATE idea SET upvote_count='$likes' WHERE id='$id'");
                         ?>
                     </span>
-                    
-                    &nbsp;
 
                     <i 
                     <?php if (userDisliked($row['id'])): ?>
