@@ -52,7 +52,7 @@
 
 				<!-- Idea Column -->
 				  
-		    	<div class="col-lg-8">
+		    	<div class="col-lg-8 shadow" style="background-color: white; border-radius:10px; margin-top: 25px;">
 
 					<!-- Idea -->
 

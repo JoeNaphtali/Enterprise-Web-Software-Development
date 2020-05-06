@@ -19,7 +19,7 @@
                     <!-- Title -->
                     
                     <?php $idea_title = $row['idea_title']; ?>
-                    <h1 class="mt-4"><?php echo $row['idea_title']; ?></h1>
+                    <h1 class="mt-4" style="font-weight: bold;"><?php echo $row['idea_title']; ?></h1>
 
                     <!-- /.Title -->
 

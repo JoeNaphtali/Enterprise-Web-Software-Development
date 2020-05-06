@@ -4,7 +4,7 @@
                 <h1 class="my-4">Latest Comments</h1>
             </div>
             <div class="col-sm-6">
-                <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
+                <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="shadow btn btn-primary my-4">Propose an Idea</button></a>
             </div>
         </div>
 
@@ -39,9 +39,9 @@
             }
         ?>
 
-        <div class="card mb-4">
+        <div class="card mb-4 shadow">
             <div class="card-body">
-                <h5><?php echo $author ?></h5>
+                <h5 style="font-weight: bold;"><?php echo $author ?></h5>
                 <i class="far fa-clock"></i> On <?php echo $date ?> at <?php echo $time ?>
                 <p>Idea: <?php echo $idea_title ?> </p>
                 <?php echo $comment_content ?>

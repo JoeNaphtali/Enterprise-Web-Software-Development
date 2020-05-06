@@ -3,8 +3,8 @@
     <!-- Search Widget -->
     
 
-    <div class="card my-4">
-        <h5 class="card-header">Search</h5>
+    <div class="card my-4 shadow">
+        <h5 class="card-header" style="font-weight: bold;">Search</h5>
         <form action="search.php" method="post">
         <div class="card-body">
             <div class="input-group">
@@ -21,8 +21,8 @@
 
     <!-- Categories Widget -->
 
-    <div class="card my-4">
-        <h5 class="card-header">Categories</h5>
+    <div class="card my-4 shadow">
+        <h5 class="card-header" style="font-weight: bold;">Categories</h5>
         <div class="card-body">
             <?php
                 // Select all the categories from the 'category' table
@@ -41,8 +41,8 @@
 
     <!-- Popular Ideas Widget -->
 
-    <div class="card my-4">
-        <h5 class="card-header">Popular Ideas</h5>
+    <div class="card my-4 shadow">
+        <h5 class="card-header" style="font-weight: bold;">Popular Ideas</h5>
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-6">
