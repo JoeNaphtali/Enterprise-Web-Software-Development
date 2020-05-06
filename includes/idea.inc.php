@@ -95,7 +95,7 @@
                     
                     if (!empty($row['attachment'])) {
 
-                        echo "<a href='includes/files/".$row['attachment']."' target='_blank'>Attachment: ".$row['attachment']."</a>";
+                        echo "<a href='attachments/".$row['attachment']."' target='_blank'>Attachment: ".$row['attachment']."</a>";
 
                     }
 
