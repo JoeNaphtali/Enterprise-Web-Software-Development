@@ -51,7 +51,7 @@
                             <a href="index.php">Latest Ideas</a>
                         </li>
                         <li>
-                            <a href="#">Recent Activity</a>
+                            <a href="index.php?latestcomments">Latest Comments</a>
                         </li>
                         <li>
                             <a href="index.php?mostviewed">Most Viewed</a>

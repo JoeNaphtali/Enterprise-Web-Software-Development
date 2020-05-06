@@ -91,6 +91,12 @@
                     include "includes/mostdownvotes.ideas.col.inc.php";
 
                 }
+                // If user clicks the 'Latest Comments' link, display all ideas and order of number of downvotes
+                else if (isset($_GET['latestcomments'])) {
+                    
+                    include "includes/latestcomments.col.inc.php";
+
+                }
                 // Display all ideas
                 else {
                 

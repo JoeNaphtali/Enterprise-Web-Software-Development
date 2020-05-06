@@ -39,7 +39,7 @@
                         $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
                         while ($row2 = mysqli_fetch_array($user_result)) {                    
                         ?>
-                        <a href="user.php?u_id=<?php echo $row2["id"]; ?>">
+                        <a href="index.php?u_id=<?php echo $row2["id"]; ?>">
                             <?php 
                             // Concatenate user firstname and lastname into 'author' variable and display author name
                             $author = $row2['first_name'] . ' ' . $row2['last_name'];
@@ -64,7 +64,7 @@
                     while ($row1 = mysqli_fetch_array($category_result)) {                    
                     ?>
 					Category:
-					<a href="category.php?c_id=<?php echo $row1['id']; ?>"><?php echo $row1['category_name']; ?></a>
+					<a href="index.php?c_id=<?php echo $row1['id']; ?>"><?php echo $row1['category_name']; ?></a>
                     </p>
                     <!-- Closing While loop -->
                     <?php } ?>

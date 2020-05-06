@@ -33,6 +33,10 @@
                     $comment_user_id = $row['user__id'];
                     $anonymous = $row['anonymous'];
 
+                    $time = new DateTime($row['comment_date']);
+                    $date = $time->format('F jS');
+                    $time = $time->format('H:i');
+
                     $query = "SELECT * FROM user WHERE id = $comment_user_id";
                     $select_user_id  = mysqli_query($conn, $query);
                     
@@ -46,25 +50,12 @@
                     }           
                     ?>
 
-                    <!-- Comment -->
-					<div class="media mb-4">
-						<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-						<div class="media-body">
-							<h5 class="mt-0">
-                                <?php 
-                                if ($anonymous == true) {
-                                    echo "Anonymous";
-                                }
-                                else {
-                                    echo $user_name;
-                                }
-                                ?>
-                            </h5>
-
-                            <?php echo "<p>$comment_content</p>"; ?>
-
-						</div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5><?php echo $user_name ?></h5>
+                            <p><i class="far fa-clock"></i> On <?php echo $date ?> at <?php echo $time ?></p>
+                            <p class="card-text"><?php echo $comment_content ?></p>
+                        </div>
                     </div>
-                    <!-- /.Comment -->
                     
                     <?php } ?>
