@@ -84,7 +84,7 @@ if (isset($_POST['update-account'])) {
         // Hash the user password
         $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
         // Bind varibales the variables to a prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "sssssss", $firstname, $lastname, $email, $hashedPwd, $department, $gender);
+        mysqli_stmt_bind_param($stmt, "ssssss", $firstname, $lastname, $email, $hashedPwd, $department, $gender);
         // Execute the prepared statement
         mysqli_stmt_execute($stmt);
         // Return the user to the login page with a success message

@@ -18,7 +18,7 @@ if (isset($_POST['submit_comment'])){
     $idea_id = $_POST['id'];
     $user_id = $_SESSION['user_id'];
     $content = $_POST['comment_content'];
-    $date = date('Y-m-d');
+    $date = date('Y-m-d H:i');
     $anonymous = false;
 
     if (isset($_POST['anonymous'])) {

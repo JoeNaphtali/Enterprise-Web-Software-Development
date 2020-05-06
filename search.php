@@ -57,7 +57,7 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h1 class="my-4 latest-ideas">Search Results</h1>
+                            <h1 class="my-4 latest-ideas" style="font-weight: bold;">Search Results</h1>
                         </div>
                         <div class="col-sm-6">
                         <a href="../../Enterprise-Web-Software-Development/propose.php"><button class="btn btn-primary my-4">Propose an Idea</button></a>
@@ -68,7 +68,7 @@
                         if (isset($_POST['submit'])){
                     
                             $search = $_POST['search'];
-                            $query = "SELECT * FROM idea WHERE content or idea_title LIKE '%$search%'";
+                            $query = "SELECT * FROM idea WHERE content LIKE '%$search%' OR idea_title LIKE '%$search%'";
                             $search_query = mysqli_query($conn, $query);
                     
                         if(!$search_query){
@@ -90,9 +90,9 @@
                         ?>
                     <!-- Idea -->
 
-                    <div class="card mb-4">
+                    <div class="card mb-4 shadow">
                         <div class="card-body">
-                            <h2 class="card-title"><?php echo "$idea_title"; ?></h2>
+                            <h2 class="card-title" style="font-weight: bold;"><?php echo "$idea_title"; ?></h2>
 
                             <!-- Category -->
 

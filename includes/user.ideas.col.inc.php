@@ -22,7 +22,7 @@
         $user__id = $_GET['u_id'];
         
         // Select all ideas from 'idea' table that were posted by the author
-        $results = mysqli_query($conn, "SELECT * FROM idea WHERE user__id = $user__id ORDER BY post_date DESC LIMIT $offset, $no_of_records_per_page");
+        $results = mysqli_query($conn, "SELECT * FROM idea WHERE user__id = $user__id AND anonymous = false ORDER BY post_date DESC LIMIT $offset, $no_of_records_per_page");
 
         while ($row = mysqli_fetch_array($results)) { 
             

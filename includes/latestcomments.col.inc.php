@@ -43,7 +43,7 @@
             <div class="card-body">
                 <h5 style="font-weight: bold;"><?php echo $author ?></h5>
                 <i class="far fa-clock"></i> On <?php echo $date ?> at <?php echo $time ?>
-                <p>Idea: <?php echo $idea_title ?> </p>
+                <p>Idea: <a href="idea.php?i_id=<?php echo $idea_id; ?>"><?php echo $idea_title ?></a></p>
                 <?php echo $comment_content ?>
             </div>
         </div>

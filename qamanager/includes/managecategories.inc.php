@@ -14,11 +14,6 @@ if (isset($_POST['save-category'])) {
         header("Location: ../managecategories.php?error=emptyfields");
         exit();
     }
-    // Display error if user enter invalid category name
-    else if (!preg_match("/^[a-zA-Z0-9]*$/", $name)) {
-        header("Location: ../managecategories.php?error=invalidname");
-        exit();
-    }
     else {
         
         // Check if category name entered by the user already exists in the database
@@ -104,11 +99,6 @@ else if (isset($_POST['update-category'])) {
     // Display an error message if the user leaves the input field empty
     if (empty($name)) {
         header("Location: ../managecategories.php?edit=$id?error=emptyfield");
-        exit();
-    }
-    // Display an error message if the user enters an invalid category name
-    else if (!preg_match("/^[a-zA-Z0-9]*$/", $name)) {
-        header("Location: ../managecategories.php?edit=$id?error=invalidname");
         exit();
     }
     else {
