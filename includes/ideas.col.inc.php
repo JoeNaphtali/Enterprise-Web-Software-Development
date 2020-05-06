@@ -20,7 +20,7 @@
             $offset = ($idea-1) * $no_of_records_per_page; 
     
         // Select all ideas from 'idea' table and order them in chronological order
-        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY post_date DESC LIMIT $offset, $no_of_records_per_page");
+        $results = mysqli_query($conn, "SELECT * FROM idea ORDER BY id DESC LIMIT $offset, $no_of_records_per_page");
 
         while ($row = mysqli_fetch_array($results)) { 
             
