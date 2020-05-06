@@ -57,6 +57,16 @@
                 <div class="form col-lg-12 mt-5 px-0 shadow">
                     <div class="card-header text-center text-light p-3" id="form-header">What's on your mind?</div>
 					<form class="bg-white p-4" action="includes/propose.inc.php" method="post" id="propose-form" enctype="multipart/form-data">
+						<?php
+							if (isset($_GET['proposal'])) {
+								if ($_GET['proposal'] == "success") {
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
+									Your idea was posted succesfully!
+									</p></div>';
+								}
+							}
+						?>
 						<div class="form-group">
 							<label>Title</label>
 							<small class="form-text text-muted">Be specific and imagine you’re proposing an idea to another person</small>

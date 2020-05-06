@@ -85,7 +85,7 @@ if (isset($_POST['propose-submit'])) {
         $mailsend =   sendmail($to,$subject,$message);
 
         // Return user to the home page with a success message
-        header("Location: ../index.php?proposal=success");
+        header("Location: ../propose.php?proposal=success");
         exit();
         }
     }
