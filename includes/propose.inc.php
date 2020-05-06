@@ -23,7 +23,7 @@ if (isset($_POST['propose-submit'])) {
 
     $tname = $_FILES["file"]["tmp_name"];
 
-    $uploads_dir = 'files';
+    $uploads_dir = '../attachments';
 
     move_uploaded_file($tname, $uploads_dir.'/'.$pname);
     

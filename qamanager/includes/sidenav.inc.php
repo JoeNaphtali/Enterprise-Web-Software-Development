@@ -14,6 +14,10 @@
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
                                 Manage Categories</a
                             >
+                            <a class="nav-link" href="downloadattachments.php"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-download"></i></div>
+                                Download Attachments</a
+                            >
                             <a class="nav-link" href="../index.php"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Ideas Home Page</a
