@@ -75,6 +75,9 @@
                     <?php } ?>
                     <!-- Closing While loop -->
 
+                    <i class="fas fa-eye"></i>&nbsp;<?php echo $row['view_count'] ?>&nbsp;
+                    <i class="fas fa-comment"></i>&nbsp;<?php echo $row['comment_count'] ?>&nbsp;
+
                     <!-- Vote count -->
 
                     <i <?php if (userLiked($row['id'])): ?>
@@ -90,8 +93,6 @@
                         mysqli_query($conn, "UPDATE idea SET upvote_count='$likes' WHERE id='$id'");
                         ?>
                     </span>
-                    
-                    &nbsp;
 
                     <i 
                     <?php if (userDisliked($row['id'])): ?>

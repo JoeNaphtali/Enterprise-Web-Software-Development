@@ -103,14 +103,14 @@
 
                     <!-- /.Idea Attachment -->
 
-					<!-- Closing While loop -->
-                    <?php } ?>
-
                     <hr>
                     
                     <!-- Vote count -->
 
                     <div class="votes">
+
+                    <i class="fas fa-eye"></i>&nbsp;<?php echo $row['view_count'] ?>&nbsp;
+                    <i class="fas fa-comment"></i>&nbsp;<?php echo $row['comment_count'] ?>&nbsp;
                         
                         <!-- Fill button icon if user likes idea, otherwise outline button icon -->
                         <i <?php if (userLiked($idea_id)): ?>
@@ -118,8 +118,8 @@
                         <?php else: ?>
                             class="material-icons-outlined like-btn"
                         <?php endif ?>
-                        data-id="<?php echo $idea_id ?>" style="cursor: pointer; color:blue;">thumb_up</i>
-                        <span class="likes" style="font-size: 24px; color:blue;">
+                        data-id="<?php echo $idea_id ?>" style="cursor: pointer; color:blue; font-size: 18px;">thumb_up</i>
+                        <span class="likes" style="font-size: 18px; color:blue;">
                             <?php echo getLikes($idea_id); 
                             $likes = getLikes($idea_id);
                             $id = $idea_id;
@@ -128,7 +128,7 @@
                         </span>
                         
                         <!-- No breaking space between like and dislike buttons -->
-                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        
 
                         <!-- Fill button icon if user likes idea, otherwise outline button icon -->
                         <i <?php if (userDisliked($idea_id)): ?>
@@ -136,8 +136,8 @@
                         <?php else: ?>
                             class="material-icons-outlined dislike-btn"
                         <?php endif ?>
-                        data-id="<?php echo $idea_id ?>" style="cursor: pointer; color:red;">thumb_down</i>
-                        <span class="dislikes" style="font-size: 24px; color:red;">
+                        data-id="<?php echo $idea_id ?>" style="cursor: pointer; color:red; font-size: 18px;">thumb_down</i>
+                        <span class="dislikes" style="font-size: 18px; color:red;">
                             <?php echo getDislikes($idea_id); 
                             $dislikes = getDislikes($idea_id);
                             $id = $idea_id;
@@ -148,3 +148,6 @@
                     </div>
 
                     <!-- /.Vote count -->
+
+                    <!-- Closing While loop -->
+                    <?php } ?>

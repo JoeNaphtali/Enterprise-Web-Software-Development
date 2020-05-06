@@ -51,7 +51,7 @@ if (isset($_POST['propose-submit'])) {
 
     // Validate for empty fields
     if (empty($content)) {
-        header("Location: ../propose.php?error=emptycontent");
+        header("Location: ../propose.php?error=emptycontent&title=".$title);
         exit();
     }
     else {

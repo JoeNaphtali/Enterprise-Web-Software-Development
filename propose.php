@@ -66,16 +66,38 @@
 									</p></div>';
 								}
 							}
+							else if (isset($_GET['error'])) {
+								if ($_GET['error'] == "emptycontent") {
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please type your idea in the text area
+									</p></div>';
+								}
+								if ($_GET['error'] == "emptycategory") {
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please select a category
+									</p></div>';
+								}				
+							}
 						?>
 						<div class="form-group">
 							<label>Title</label>
 							<small class="form-text text-muted">Be specific and imagine you’re proposing an idea to another person</small>
+							<?php if (isset($_GET['title'])):?>
+							<input type="text" class="form-control" name="title" value="<?php echo ($_GET['title']); ?>" required>
+							<?php else :?>
 							<input type="text" class="form-control" name="title" required>
+							<?php endif ?>
 						</div>
 						<div class="form-group">
 							<label>Body</label>
 							<small class="form-text text-muted">Include all the details about your proposed idea</small>
+							<?php if (isset($_GET['content'])):?>
+							<textarea class="form-control panel-default" id="summernote" name="content" value="<?php echo ($_GET['content']); ?>"></textarea>
+							<?php else :?>
 							<textarea class="form-control panel-default" id="summernote" name="content"></textarea>
+							<?php endif ?>
 						</div>
 						<div class="form-group">
 							<label>Catergories</label>
@@ -104,11 +126,7 @@
 						</div>
 						<button type="submit" class="btn btn-primary" name="propose-submit" id="propose-submit" disabled>Propose Idea</button>
 						<?php		
-							if (isset($_GET['error'])) {
-								if ($_GET['error'] == "emptycontent") {
-									echo '<p class="text-center" style="color: red;">Please type your idea in the textarea</p>';
-								}			
-							}
+							
 						?>
 					</form>
                 </div>

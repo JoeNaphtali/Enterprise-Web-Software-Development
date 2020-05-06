@@ -46,10 +46,24 @@
             <div class="row justify-content-center">
                 <div class="form col-lg-4 bg-light mt-5 px-0 shadow">
                     <div class="card-header text-center text-light p-3" id="form-header">Login</div>
-                    <form class="bg-white p-4" action="includes/login.inc.php" method="post">
+					<form class="bg-white p-4" action="includes/login.inc.php" method="post">
+						<?php
+							if (isset($_GET['register'])) {
+								if ($_GET['register'] == "success") {
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
+									Registration Succesful!
+									</p></div>';
+								}
+							}
+						?>
                         <div class="form-group">
-                            <label>Email address</label>
-                            <input class="form-control" type="email" name="mail" placeholder="Enter your email" required>
+							<label>Email address</label>
+							<?php if (isset($_GET['mail'])):?>
+							<input class="form-control" type="email" name="mail" value="<?php echo ($_GET['mail']); ?>" required>
+							<?php else :?>
+							<input class="form-control" type="email" name="mail" required>
+							<?php endif ?>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
@@ -62,13 +76,22 @@
                         <?php		
 							if (isset($_GET['error'])) {
 								if ($_GET['error'] == "nouser") {
-									echo '<p class="text-center" style="color: red;">Incorrect email address</p>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Incorrect email address
+									</p></div>';
 								}
 								else if ($_GET['error'] == "wrongpwd") { 
-									echo '<p class="text-center" style="color: red;">Incorrect password</p>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Incorrect password
+									</p></div>';
                                 }
                                 if ($_GET['error'] == "emptyfields") {
-									echo '<p class="text-center" style="color: red;">Please fill in all the fields</p>';
+									echo '<div class="text-center">
+									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+									Please fill in all the fields
+									</p></div>';
 								}				
 							}
 						?>

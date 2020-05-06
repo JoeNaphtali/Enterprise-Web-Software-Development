@@ -44,6 +44,16 @@
                 <main>
                     <div class="container-fluid">
                     <h1 class="mt-4">Users</h1>
+                    <?php
+                    
+                    if (isset($_GET['userdeleted'])) {
+                        echo '<div class="text-center">
+                        <p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+                        User deleted
+                        </p></div>';
+                    }
+                    
+                    ?>
                         <div class="card mb-4">                        
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -128,6 +138,24 @@
                                 <div class="form col-lg-12 mt-5 px-0 shadow">
                                     <div class="card-header text-center text-light p-3 bg-dark" id="form-header" >Manage Users</div>
                                     <form class="bg-white p-4" action="includes/manageusers.inc.php" method="post">
+                                    <?php 
+                                        if (isset($_GET['useradded'])) {
+                                            if ($_GET['useradded'] == "succesfully") {
+                                                echo '<div class="text-center">
+                                                <p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
+                                                User added succesfully!
+                                                </p></div>';
+                                            }
+                                        }
+                                        else if (isset($_GET['update'])) {
+                                            if ($_GET['update'] == "success") {
+                                                echo '<div class="text-center">
+                                                <p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
+                                                User details updated succesfully!
+                                                </p></div>';
+                                            }
+                                        }
+                                    ?>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>First Name</label>

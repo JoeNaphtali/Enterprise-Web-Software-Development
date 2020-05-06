@@ -44,6 +44,16 @@
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">Comments</h1>
+                        <?php
+                    
+                        if (isset($_GET['commentdeleted'])) {
+                            echo '<div class="text-center">
+                            <p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+                            Comment deleted
+                            </p></div>';
+                        }
+                        
+                        ?>
                         <div class="card mb-4">                        
                             <div class="card-body">
                                 <div class="table-responsive">

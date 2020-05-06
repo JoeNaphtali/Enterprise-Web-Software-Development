@@ -77,7 +77,17 @@
             <div class="row justify-content-center">
                 <div class="form col-lg-8 mt-5 px-0 shadow">
                     <div class="card-header text-center text-light p-3" id="form-header">My Account</div>
-		        	<form class="bg-white p-4" action="includes/editaccount.inc.php" method="post">
+					<form class="bg-white p-4" action="includes/editaccount.inc.php" method="post">
+					<?php 
+						if (isset($_GET['update'])) {
+							if ($_GET['update'] == "success") {
+								echo '<div class="text-center">
+								<p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
+								Account updated succesfully!
+								</p></div>';
+							}
+						}
+					?>
 		          		<div class="form-row">
 		            		<div class="form-group col-md-6">
 								<label>First Name</label>
