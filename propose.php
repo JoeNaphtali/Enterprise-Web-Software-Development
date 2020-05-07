@@ -128,7 +128,7 @@
 						</div>
 						<div class="custom-control custom-checkbox form-group">
 							<input type="checkbox" class="form-check-input" id="terms_and_conditions" value="1">
-							<label class="form-check-label" for="terms_and_conditions">Do you agree to the terms and conditions</label>
+							<label class="form-check-label" for="terms_and_conditions">Do you agree to the <a href="#">terms and conditions</a></label>
 						</div>
 						<button type="submit" class="btn btn-primary" name="propose-submit" id="propose-submit" disabled>Propose Idea</button>
 						<?php		

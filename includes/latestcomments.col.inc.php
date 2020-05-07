@@ -22,13 +22,21 @@
             $time = new DateTime($row['comment_date']);
             $date = $time->format('F jS');
             $time = $time->format('H:i');
+            $anonymous = $row['anonymous'];
 
             $comment_content = $row['content'];
             // Retrieve user from 'user' table
             $user_result = mysqli_query($conn, "SELECT * FROM user WHERE id=$user_id");
-            while ($row2 = mysqli_fetch_array($user_result)) {                    
-            // Concatenate user firstname and lastname into 'author' variable and display author name
-            $author = $row2['first_name'] . ' ' . $row2['last_name'];
+            while ($row2 = mysqli_fetch_array($user_result)) {
+                
+                if ($anonymous == true) {
+                    $author = "Anonymous";
+                }
+                else {
+                    // Concatenate user firstname and lastname into 'author' variable and display author name
+                    $author = $row2['first_name'] . ' ' . $row2['last_name'];
+                }
+            
             }
             $comment_content = $row['content'];
             // Retrieve idea title from 'idea' table

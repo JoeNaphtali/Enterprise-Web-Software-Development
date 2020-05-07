@@ -46,7 +46,13 @@
                     $first_name = $row['first_name'];
                     $last_name = $row['last_name'];
 
-                    $user_name = $first_name . " " . $last_name;
+                    if ($anonymous == true) {
+                        $user_name = "Anonymous";
+                    }
+                    else {
+                        $user_name = $first_name . " " . $last_name;
+                    }
+
                     }           
                     ?>
 

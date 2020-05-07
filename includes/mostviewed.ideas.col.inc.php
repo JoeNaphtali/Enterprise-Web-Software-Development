@@ -47,7 +47,7 @@
                     <?php $time = new DateTime($row['post_date']);
                     $date = $time->format('F jS');
                     $time = $time->format('H:i'); ?>
-                    Posted on <?php echo $date ?> at <?php echo $time ?> by   
+                    Proposed on <?php echo $date ?> at <?php echo $time ?> by   
                     <?php if ($row['anonymous'] == true) { ?>                       
                     Anonymous&nbsp;&nbsp;
                     <?php } else { ?>

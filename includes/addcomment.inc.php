@@ -61,7 +61,12 @@ if (isset($_POST['submit_comment'])){
             // Send email notification to author of idea
             $to       =   $author_email;
             $subject  =   "A new comment has been made on your idea";
-            $message  =   $_SESSION['first_name'].' '.$_SESSION['last_name'].' '."commented on your idea '".$idea_title."'.";
+            if ($anonymous = true) {
+                $message  =   "An anonymous user commented on your idea '".$idea_title."'.";
+            }
+            else {
+                $message  =   $_SESSION['first_name'].' '.$_SESSION['last_name'].' '."commented on your idea '".$idea_title."'.";
+            }
             $mailsend =   sendmail($to,$subject,$message);
 
             // Return to idea page

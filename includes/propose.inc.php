@@ -79,9 +79,14 @@ if (isset($_POST['propose-submit'])) {
         }
 
         // Send email notification to author of idea
-        $to       =   $qacoordinator_email;
+        $to       =   "josephwamulume@gmail.com";
         $subject  =   "A new idea has been added to your department";
-        $message  =   $_SESSION['first_name'].' '.$_SESSION['last_name'].' '."submitted a new idea '".$title."'.";
+        if ($anonymous = true) {
+            $message  =   "An anonymous user submitted a new idea '".$title."'.";
+        }
+        else {
+            $message  =   $_SESSION['first_name'].' '.$_SESSION['last_name'].' '."submitted a new idea '".$title."'.";
+        }
         $mailsend =   sendmail($to,$subject,$message);
 
         // Return user to the home page with a success message
