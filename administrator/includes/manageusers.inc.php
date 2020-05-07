@@ -85,7 +85,7 @@ if (isset($_POST['add-user-submit'])) {
             exit();
         }
         else {
-            // Bind varibales the variables to a prepared statement as parameters
+            // Bind the variables to a prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $email);
             // Execute prepared statement
             mysqli_stmt_execute($stmt);
@@ -111,7 +111,7 @@ if (isset($_POST['add-user-submit'])) {
 
                 // Hash the user password
                 $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-                // Bind varibales the variables to a prepared statement as parameters
+                // Bind the variables to a prepared statement as parameters
                 mysqli_stmt_bind_param($stmt, "sssssss", $firstname, $lastname, $email, $hashedPwd, $department, $gender, $user_role);
                 // Execute the prepared statement
                 mysqli_stmt_execute($stmt);
@@ -141,15 +141,99 @@ else if (isset($_GET['delete'])) {
     $results = mysqli_query($conn, "SELECT * FROM idea WHERE user__id='$id'");
 
     while ($row = mysqli_fetch_array($results)) {
+        
         $idea_id = $row['id'];
-        // Delete all comments from ideas that were posted by the user
-        mysqli_query($conn, "DELETE FROM comment WHERE idea_id='$idea_id'");
+
+        // Delete all ratings from idea posted by the user
+        $sql = "DELETE FROM rating WHERE idea_id=?";
+        $stmt = mysqli_stmt_init($conn);
+        // Display error if there is an sql syntax error in the 'DELETE' statement
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("Location: ../manageusers.php?error=sqlerror");
+            exit();
+        }
+        else {
+            // Bind varibales the to a prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $idea_id);
+            // Execute prepared statement
+            mysqli_stmt_execute($stmt);
+        }
+
+       // Delete all comments from ideas that were posted by the user
+        $sql = "DELETE FROM comment WHERE idea_id=?";
+        $stmt = mysqli_stmt_init($conn);
+        // Display error if there is an sql syntax error in the 'DELETE' statement
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("Location: ../manageusers.php?error=sqlerror");
+            exit();
+        }
+        else {
+            // Bind varibales the to a prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $idea_id);
+            // Execute prepared statement
+            mysqli_stmt_execute($stmt);
+        }  
+    }
+
+    // Delete all ratings the user gave
+    $sql = "DELETE FROM rating WHERE user__id=?";
+    $stmt = mysqli_stmt_init($conn);
+    // Display error if there is an sql syntax error in the 'DELETE' statement
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../manageusers.php?error=sqlerror");
+        exit();
+    }
+    else {
+        // Bind varibales the to a prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "s", $id);
+        // Execute prepared statement
+        mysqli_stmt_execute($stmt);
+    }
+
+    // Delete all comments belonging to user from the database
+    $sql = "DELETE FROM comment WHERE user__id=?";
+    $stmt = mysqli_stmt_init($conn);
+    // Display error if there is an sql syntax error in the 'DELETE' statement
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../manageusers.php?error=sqlerror");
+        exit();
+    }
+    else {
+        // Bind varibales the to a prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "s", $id);
+        // Execute prepared statement
+        mysqli_stmt_execute($stmt);
     }
 
     // Delete all ideas belonging to user from the database
-    mysqli_query($conn, "DELETE FROM idea WHERE user__id='$id'");
+    $sql = "DELETE FROM idea WHERE user__id=?";
+    $stmt = mysqli_stmt_init($conn);
+    // Display error if there is an sql syntax error in the 'DELETE' statement
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../manageusers.php?error=sqlerror");
+        exit();
+    }
+    else {
+        // Bind varibales the to a prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "s", $id);
+        // Execute prepared statement
+        mysqli_stmt_execute($stmt);
+    }
+
     // Delete the user from the database
-    mysqli_query($conn, "DELETE FROM user WHERE id='$id'");
+    $sql = "DELETE FROM user WHERE id=?";
+    $stmt = mysqli_stmt_init($conn);
+    // Display error if there is an sql syntax error in the 'DELETE' statement
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../manageusers.php?error=sqlerror");
+        exit();
+    }
+    else {
+        // Bind varibales the to a prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "s", $id);
+        // Execute prepared statement
+        mysqli_stmt_execute($stmt);
+    }
 
     if ($id == $_SESSION['user_id']) {
         session_start();

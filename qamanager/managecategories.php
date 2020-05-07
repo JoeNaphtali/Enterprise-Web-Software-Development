@@ -97,6 +97,20 @@
                                             Category deleted.
                                             </p></div>';
                                         }
+                                        else if (isset($_GET['error'])) {
+                                            if ($_GET['error'] == "nameexists") {
+                                                echo '<div class="text-center">
+                                                <p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+                                                This category already exists
+                                                </p></div>';
+                                            }
+                                            if ($_GET['error'] == "categoryused") {
+                                                echo '<div class="text-center">
+                                                <p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
+                                                This category is currently is use
+                                                </p></div>';
+                                            }				
+                                        }
                                     ?>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">

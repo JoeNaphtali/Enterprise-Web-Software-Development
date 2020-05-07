@@ -8,7 +8,7 @@
     //If user is not logged in, redirect to login page
     if(!$_SESSION['login']){
         header("Location: login.php");
-    }  
+    }
 ?>
 
 <!DOCTYPE html>

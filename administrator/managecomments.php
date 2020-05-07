@@ -100,7 +100,7 @@
                                                     $anonymous = "No";
                                                 } ?>
                                                 <td><?php echo $anonymous; ?></td>
-                                                <td><a href="includes/managecomments.inc.php?delete=<?php echo $row["id"]; ?>" class="btn btn-danger" style="color: #fff;"><i class="fas fa-trash-alt"></i></a></td>
+                                                <td><a href="includes/managecomments.inc.php?delete=<?php echo $row["id"]; ?>&i_id=<?php echo $row["idea_id"]; ?>" class="btn btn-danger" style="color: #fff;"><i class="fas fa-trash-alt"></i></a></td>
                                             </tr>
                                         <?php } ?>                                            
                                         </tbody>

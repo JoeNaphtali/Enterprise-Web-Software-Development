@@ -47,6 +47,7 @@
                         <?php
                     
                         if (isset($_GET['ideadeleted'])) {
+                            // Display success message if idea is deleted successfully
                             echo '<div class="text-center">
                             <p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
                             Idea deleted

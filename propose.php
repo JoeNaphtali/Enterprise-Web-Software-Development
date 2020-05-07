@@ -58,7 +58,11 @@
                     <div class="card-header text-center text-light p-3" id="form-header">What's on your mind?</div>
 					<form class="bg-white p-4" action="includes/propose.inc.php" method="post" id="propose-form" enctype="multipart/form-data">
 						<?php
+
+							// Error/Success messages
+
 							if (isset($_GET['proposal'])) {
+								// Display success message if idea proposal is succesful
 								if ($_GET['proposal'] == "success") {
 									echo '<div class="text-center">
 									<p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
@@ -67,12 +71,14 @@
 								}
 							}
 							else if (isset($_GET['error'])) {
+								// Display error message if user did no enter anything in the 'Body' text area
 								if ($_GET['error'] == "emptycontent") {
 									echo '<div class="text-center">
 									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
 									Please type your idea in the text area
 									</p></div>';
 								}
+								// Display error message if user did no select a category
 								if ($_GET['error'] == "emptycategory") {
 									echo '<div class="text-center">
 									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">

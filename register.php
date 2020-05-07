@@ -111,7 +111,7 @@
                             <a href="login.php">Login</a>
                         </p>
 						<?php
-						
+							// Error messages
 							if (isset($_GET['error'])) {
 								if ($_GET['error'] == "emptydprtmnt") {
 									echo '<div class="text-center">

@@ -80,6 +80,7 @@
 					<form class="bg-white p-4" action="includes/editaccount.inc.php" method="post">
 					<?php 
 						if (isset($_GET['update'])) {
+							// Display success message is user details are displayed succesfully
 							if ($_GET['update'] == "success") {
 								echo '<div class="text-center">
 								<p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">

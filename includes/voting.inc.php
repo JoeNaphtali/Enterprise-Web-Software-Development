@@ -13,25 +13,25 @@ if (isset($_POST['action'])) {
     $action = $_POST['action'];
 
     switch ($action) {
-        // Insert into vote_info table if user likes an idea
+        // Insert into rating table if user likes an idea
         case 'like':
-            $sql="INSERT INTO vote_info (idea_id, user__id, vote) 
+            $sql="INSERT INTO rating (idea_id, user__id, vote) 
                    VALUES ($idea_id, $user__id, 'like') 
                    ON DUPLICATE KEY UPDATE vote = 'like'";
             break;
-        // Insert into vote_info table if user dislikes an idea
+        // Insert into rating table if user dislikes an idea
         case 'dislike':
-            $sql="INSERT INTO vote_info (idea_id, user__id, vote) 
+            $sql="INSERT INTO rating (idea_id, user__id, vote) 
                    VALUES ($idea_id, $user__id, 'dislike') 
                    ON DUPLICATE KEY UPDATE vote = 'dislike'";
             break;
-        // Remove from vote_info table if user unlikes an idea
+        // Remove from rating table if user unlikes an idea
         case 'unlike':
-            $sql="DELETE FROM vote_info WHERE user__id = $user__id AND idea_id = $idea_id";
+            $sql="DELETE FROM rating WHERE user__id = $user__id AND idea_id = $idea_id";
             break;
-        // Remove from vote_info table if user un-dislikes an idea
+        // Remove from rating table if user un-dislikes an idea
         case 'undislike':
-            $sql="DELETE FROM vote_info WHERE user__id = $user__id AND idea_id = $idea_id";
+            $sql="DELETE FROM rating WHERE user__id = $user__id AND idea_id = $idea_id";
             break;
         default:
             break;
@@ -48,7 +48,7 @@ if (isset($_POST['action'])) {
 function getLikes($id)
 {
   global $conn;
-  $sql = "SELECT COUNT(*) FROM vote_info 
+  $sql = "SELECT COUNT(*) FROM rating 
   		  WHERE idea_id = $id AND vote = 'like'";
   $rs = mysqli_query($conn, $sql);
   $result = mysqli_fetch_array($rs);
@@ -59,7 +59,7 @@ function getLikes($id)
 function getDislikes($id)
 {
   global $conn;
-  $sql = "SELECT COUNT(*) FROM vote_info 
+  $sql = "SELECT COUNT(*) FROM rating 
   		  WHERE idea_id = $id AND vote = 'dislike'";
   $rs = mysqli_query($conn, $sql);
   $result = mysqli_fetch_array($rs);
@@ -71,8 +71,8 @@ function getVotes($id)
 {
   global $conn;
   $votes = array();
-  $likes_query = "SELECT COUNT(*) FROM vote_info WHERE idea_id = $id AND vote = 'like'";
-  $dislikes_query = "SELECT COUNT(*) FROM vote_info WHERE idea_id = $id AND vote = 'dislike'";
+  $likes_query = "SELECT COUNT(*) FROM rating WHERE idea_id = $id AND vote = 'like'";
+  $dislikes_query = "SELECT COUNT(*) FROM rating WHERE idea_id = $id AND vote = 'dislike'";
   $likes_rs = mysqli_query($conn, $likes_query);
   $dislikes_rs = mysqli_query($conn, $dislikes_query);
   $likes = mysqli_fetch_array($likes_rs);
@@ -90,7 +90,7 @@ function userLiked($idea_id)
 {
   global $conn;
   global $user__id;
-  $sql = "SELECT * FROM vote_info WHERE user__id = $user__id 
+  $sql = "SELECT * FROM rating WHERE user__id = $user__id 
   		  AND idea_id = $idea_id AND vote = 'like'";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
@@ -105,7 +105,7 @@ function userDisliked($idea_id)
 {
   global $conn;
   global $user__id;
-  $sql = "SELECT * FROM vote_info WHERE user__id = $user__id 
+  $sql = "SELECT * FROM rating WHERE user__id = $user__id 
           AND idea_id = $idea_id AND vote = 'dislike'";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {

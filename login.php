@@ -49,6 +49,7 @@
 					<form class="bg-white p-4" action="includes/login.inc.php" method="post">
 						<?php
 							if (isset($_GET['register'])) {
+								// Display success message of user registered succesfully
 								if ($_GET['register'] == "success") {
 									echo '<div class="text-center">
 									<p class="text-white" style="background-color: green; padding: 10px 0 10px 0;">
@@ -73,20 +74,24 @@
                         <p>Don't have an account?
                             <a href="register.php">Register</a>
                         </p>
-                        <?php		
+						<?php
+							// Error messages		
 							if (isset($_GET['error'])) {
+								// Display error message if the user does not exist or enters a incorrect email address
 								if ($_GET['error'] == "nouser") {
 									echo '<div class="text-center">
 									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
 									Incorrect email address
 									</p></div>';
 								}
+								// Display error message if the user enters an incorrect password
 								else if ($_GET['error'] == "wrongpwd") { 
 									echo '<div class="text-center">
 									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">
 									Incorrect password
 									</p></div>';
-                                }
+								}
+								// Display error message if the user leaves an field empty
                                 if ($_GET['error'] == "emptyfields") {
 									echo '<div class="text-center">
 									<p class="text-white" style="background-color: #bb2124; padding: 10px 0 10px 0;">

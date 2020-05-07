@@ -40,6 +40,7 @@
             <!-- /.Side Navigation -->
 
             <!-- Content -->
+
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
@@ -129,10 +130,14 @@
                     </div>
                 </footer>
             </div>
+
             <!-- /.Content -->
         </div>
+
         <script src="js/TableCSVExporter.js"></script>
+
         <script>
+            // Export statistics table into a .csv file
             const statsTable = document.getElementById("statistics");
             const btnExportstats = document.getElementById("btnExportstats");
 
@@ -152,7 +157,9 @@
                 }, 500);
             });
         </script>
+
         <script>
+            // Export exception reports table into a .csv file
             const exceptTable = document.getElementById("exceptReports");
             const btnExportexp = document.getElementById("btnExportexp");
 
@@ -172,14 +179,13 @@
                 }, 500);
             });
         </script>
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
+
     </body>
 </html>

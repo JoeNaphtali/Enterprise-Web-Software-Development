@@ -120,13 +120,13 @@ echo "Error creating idea table: ".$conn->error;
 
 //Create Vote Info Table
 
-$sql1 = "CREATE TABLE vote_info(
+$sql1 = "CREATE TABLE rating(
     idea_id INT(3) NOT NULL,
     user__id INT(3) NOT NULL,
     vote VARCHAR(255) NOT NULL,
     FOREIGN KEY (idea_id) REFERENCES idea(id),
     FOREIGN KEY (user__id) REFERENCES user(id),
-    CONSTRAINT PK_vote_info PRIMARY KEY (idea_id, user__id)
+    CONSTRAINT PK_rating PRIMARY KEY (idea_id, user__id)
     )";
 //Display result if connection is successful
 if($conn->query($sql1) === TRUE) { 
