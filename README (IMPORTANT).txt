@@ -1,4 +1,10 @@
-                                            ** Default User Credentials **
+IMPORTANT: THE WEBSITE HAS TO BE RUN USING AN INTERNET CONNECTION IN ORDER TO SEND EMAIL NOTIFICATIONS AND GET THE
+COMPLETE INTERFACE LAYOUT.
+
+Open the setup.php file in your web browser to create the database and add the data.                                            
+
+
+						** Default User Credentials **
 
 Administrator   -> email: admin201196@ideas.com
                    password: Admin1234

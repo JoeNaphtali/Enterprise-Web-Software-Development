@@ -79,7 +79,7 @@ if (isset($_POST['propose-submit'])) {
         }
 
         // Send email notification to author of idea
-        $to       =   "josephwamulume@gmail.com";
+        $to       =   $qacoordinator_email;
         $subject  =   "A new idea has been added to your department";
         if ($anonymous = true) {
             $message  =   "An anonymous user submitted a new idea '".$title."'.";
